@@ -34,4 +34,18 @@ public class WoodManager : MonoBehaviour
             Debug.LogWarning("Kan geen negatief of nul aantal hout toevoegen.");
         }
     }
+
+    // Functie om hout te verliezen of uit te geven
+    public void LoseWood(int amountLost)
+    {
+        if (amountLost > 0 && currentWood >= amountLost) // Controleer of je genoeg hout hebt
+        {
+            currentWood -= amountLost;
+            Debug.Log("Hout verloren. Totaal hout: " + currentWood);
+        }
+        else
+        {
+            Debug.LogWarning("Je hebt niet genoeg hout om te verliezen.");
+        }
+    }
 }
