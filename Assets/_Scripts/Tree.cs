@@ -7,8 +7,11 @@ using UnityEngine;
 public class Tree : MonoBehaviour, IInteractable
 {
     [SerializeField] Rigidbody rb;
-    [SerializeField] FixedJoint[]joints;
-    [SerializeField] Vector3 force;
+    [SerializeField] FixedJoint[] joints;
+    [SerializeField] Transform target;
+    [SerializeField, ReadOnly] Vector3 dir;
+    [SerializeField] float torqueForce = 800;
+    [SerializeField] float force = 200;
     [SerializeField] int health = 1;
     [SerializeField] GameObject leafs;
 
@@ -16,14 +19,16 @@ public class Tree : MonoBehaviour, IInteractable
     public void OnInteract()
     {
         health--;
-        if (health <= 0)
+        if (health == 0)
         {
+            dir = transform.position - target.position;
+
             leafs.SetActive(false);
 
             rb.isKinematic = false;
-            rb.AddTorque(force);
+            rb.AddTorque(dir.normalized * torqueForce);
 
-            StartCoroutine(BreakJoints(2));
+            StartCoroutine(BreakJoints(1.5f));
         }
     }
 
@@ -31,9 +36,11 @@ public class Tree : MonoBehaviour, IInteractable
     {
         yield return new WaitForSeconds(delay);
 
-        foreach (var joint in joints)
+        for (int i = joints.Length - 1; i >= 0; i--)
         {
-            Destroy(joint);
+            joints[i].GetComponent<Rigidbody>().AddForce(dir.normalized * force);
+            Destroy(joints[i]);
+            joints[i] = null;
         }
     }
 }
