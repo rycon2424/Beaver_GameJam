@@ -268,6 +268,8 @@ MonoBehaviour:
   resourceType: 0
   health: 1
   yielded: 0
+  joint: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &2842430690283326444
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +441,8 @@ MonoBehaviour:
   resourceType: 0
   health: 1
   yielded: 0
+  joint: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &4156049870067070032
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +682,8 @@ MonoBehaviour:
   resourceType: 0
   health: 1
   yielded: 0
+  joint: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!1 &6261257852005483864
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +698,7 @@ GameObject:
   - component: {fileID: 574238348539433232}
   m_Layer: 0
   m_Name: Stump
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

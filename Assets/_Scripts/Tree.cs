@@ -30,6 +30,8 @@ public class Tree : MonoBehaviour, IInteractable
     [Button]
     public void OnInteract(Transform playerTransform)
     {
+        FindFirstObjectByType<PlayerAnimation>().PlayAnimation(PlayerAnimationStates.Chomp);
+        
         health--;
         directions.Add((playerTransform.position - transform.position).normalized);
 

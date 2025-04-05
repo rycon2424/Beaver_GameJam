@@ -16,6 +16,13 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Follow Smoothing")]
     public float smoothSpeed = 5f;
 
+    [Header("Camera Zoom Settings")]
+    public float zoomSpeed = 2f;
+    public float minZoomY = 5f;
+    public float maxZoomY = 20f;
+    [Space]
+    public LayerMask cameraRayMask;
+
     private PlayerAnimation playerAnim;
     private bool moving;
 
@@ -29,6 +36,12 @@ public class PlayerController : MonoBehaviour
     {
         HandleAnimation();
         HandleMovement();
+        HandleZoom(); // New: handle zooming
+    }
+
+    private void LateUpdate()
+    {
+        FollowPlayerWithCamera();
     }
 
     private void HandleAnimation()
@@ -46,17 +59,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        FollowPlayerWithCamera();
-    }
-
     private void HandleMovement()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, cameraRayMask))
             {
                 playerAgent.SetDestination(hit.point);
 
@@ -77,16 +85,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleZoom()
+    {
+        float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+
+        if (Mathf.Abs(scrollInput) > 0.01f)
+        {
+            cameraOffset.y -= scrollInput * zoomSpeed;
+            cameraOffset.z += scrollInput * zoomSpeed; // optional: maintain angle
+
+            cameraOffset.y = Mathf.Clamp(cameraOffset.y, minZoomY, maxZoomY);
+            cameraOffset.z = Mathf.Clamp(cameraOffset.z, -maxZoomY, -minZoomY); // adjust z clamp as needed
+        }
+    }
+
     private void FollowPlayerWithCamera()
     {
         if (!playerAgent || !mainCamera)
             return;
 
-        // Set desired position based on static offset (world-relative to player)
         Vector3 desiredPosition = playerAgent.transform.position + cameraOffset;
         mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-
-        // Set fixed rotation
         mainCamera.transform.rotation = Quaternion.Euler(cameraRotationEuler);
     }
 }
