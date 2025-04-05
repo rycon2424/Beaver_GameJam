@@ -16,9 +16,34 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Follow Smoothing")]
     public float smoothSpeed = 5f;
 
+    private PlayerAnimation playerAnim;
+    private bool moving;
+
+    private void Start()
+    {
+        playerAnim = GetComponent<PlayerAnimation>();
+        playerAnim.SetRunning(false);
+    }
+
     private void Update()
     {
+        HandleAnimation();
         HandleMovement();
+    }
+
+    private void HandleAnimation()
+    {
+        if (moving == false && playerAgent.hasPath)
+        {
+            moving = true;
+            playerAnim.SetRunning(true);
+        }
+
+        if (moving == true && playerAgent.hasPath == false)
+        {
+            moving = false;
+            playerAnim.SetRunning(false);
+        }
     }
 
     private void LateUpdate()
@@ -38,9 +63,7 @@ public class PlayerController : MonoBehaviour
                 IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
 
                 if (interactable != null)
-                {    
-                    Debug.DrawLine(rayPoint.position, hit.collider.gameObject.transform.position, Color.green, 2f);
-                    Debug.Log(Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position));
+                {
                     if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
@@ -48,7 +71,7 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
-                
+
                 playerAgent.SetDestination(hit.point);
             }
         }
