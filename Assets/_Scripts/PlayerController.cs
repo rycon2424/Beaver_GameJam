@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player and NavMesh")]
     public NavMeshAgent playerAgent;
     public Camera mainCamera;
+    public Transform rayPoint;
     public float interactableRange = 1.5f;
 
     [Header("Camera Offset Settings")]
@@ -15,9 +16,34 @@ public class PlayerController : MonoBehaviour
     [Header("Camera Follow Smoothing")]
     public float smoothSpeed = 5f;
 
+    private PlayerAnimation playerAnim;
+    private bool moving;
+
+    private void Start()
+    {
+        playerAnim = GetComponent<PlayerAnimation>();
+        playerAnim.SetRunning(false);
+    }
+
     private void Update()
     {
+        HandleAnimation();
         HandleMovement();
+    }
+
+    private void HandleAnimation()
+    {
+        if (moving == false && playerAgent.hasPath)
+        {
+            moving = true;
+            playerAnim.SetRunning(true);
+        }
+
+        if (moving == true && playerAgent.hasPath == false)
+        {
+            moving = false;
+            playerAnim.SetRunning(false);
+        }
     }
 
     private void LateUpdate()
@@ -37,15 +63,15 @@ public class PlayerController : MonoBehaviour
                 IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
 
                 if (interactable != null)
-                {                
-                    if (Vector3.Distance(playerAgent.transform.position, hit.collider.gameObject.transform.position) <= interactableRange)
+                {
+                    if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
                         interactable.OnInteract(transform);
                         return;
                     }
                 }
-                
+
                 playerAgent.SetDestination(hit.point);
             }
         }
