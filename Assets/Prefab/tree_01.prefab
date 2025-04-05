@@ -54,11 +54,11 @@ MonoBehaviour:
   joints:
   - {fileID: 7303191408751568220}
   - {fileID: 5634511665160995034}
-  dir: {x: 0, y: 0, z: 0}
+  leafs: {fileID: 4156049870067070032}
+  health: 3
   torqueForce: 150
   force: 200
-  health: 3
-  leafs: {fileID: 4156049870067070032}
+  dir: {x: 0, y: 0, z: 0}
 --- !u!208 &9154429746953936485
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 9027172450450912656}
   - component: {fileID: 7303191408751568220}
   - component: {fileID: 7028819828021176547}
+  - component: {fileID: 2778650717559766001}
   m_Layer: 0
   m_Name: Wood Mid
   m_TagString: Untagged
@@ -251,6 +252,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5368624, y: 0.61270744, z: 2.4350965}
   m_Center: {x: 0.0028766543, y: 0.022771401, z: -0.04871898}
+--- !u!114 &2778650717559766001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2577781761961753625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae93241fa4048f4792470775214de93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldAmount: 1
+  resourceType: 0
+  health: 1
+  yielded: 0
 --- !u!1 &2842430690283326444
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +282,7 @@ GameObject:
   - component: {fileID: 654028554275041148}
   - component: {fileID: 5634511665160995034}
   - component: {fileID: 3281153993532426017}
+  - component: {fileID: 5682419540468181354}
   m_Layer: 0
   m_Name: Wood Top
   m_TagString: Untagged
@@ -405,6 +423,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.49303168, y: 0.510305, z: 2.423219}
   m_Center: {x: 0.015162885, y: -0.0040226574, z: -0.118205115}
+--- !u!114 &5682419540468181354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2842430690283326444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae93241fa4048f4792470775214de93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldAmount: 1
+  resourceType: 0
+  health: 1
+  yielded: 0
 --- !u!1 &4156049870067070032
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,6 +538,7 @@ GameObject:
   - component: {fileID: 7050362128863078603}
   - component: {fileID: 3476635282140788099}
   - component: {fileID: 2752995116226345389}
+  - component: {fileID: 5981280348957675898}
   m_Layer: 0
   m_Name: Wood Bottom
   m_TagString: Untagged
@@ -627,6 +662,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5807201, y: 0.63141245, z: 2.4367025}
   m_Center: {x: 0.010556191, y: -0.011384978, z: -0.00000023841855}
+--- !u!114 &5981280348957675898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766735675924111666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae93241fa4048f4792470775214de93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yieldAmount: 1
+  resourceType: 0
+  health: 1
+  yielded: 0
 --- !u!1 &6261257852005483864
 GameObject:
   m_ObjectHideFlags: 0
