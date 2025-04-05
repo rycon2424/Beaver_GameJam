@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using TMPro;
 using UnityEngine.Serialization;
 
 public class UIManager : SerializedMonoBehaviour
@@ -18,8 +20,12 @@ public class UIManager : SerializedMonoBehaviour
     [SerializeField] private GameObject uiBarPrefab;
     [SerializeField] private Transform itemContent;
     [SerializeField] private GameObject itemPrefab;
+    
+    [Header("Timer")]
+    public TMP_Text timerText;
+    private Coroutine timerCoroutine;
 
-    private Dictionary<string, UIBar> spawnedBars = new Dictionary<string, UIBar>();
+    [HideInInspector] public Dictionary<string, UIBar> spawnedBars = new Dictionary<string, UIBar>();
     private Dictionary<ItemTypes, ItemVisual> itemVisuals = new Dictionary<ItemTypes, ItemVisual>();
 
     public static UIManager Singleton;
@@ -39,6 +45,7 @@ public class UIManager : SerializedMonoBehaviour
 
     private void Start()
     {
+        timerText.text = "";
         spawnedBars = new Dictionary<string, UIBar>();
         
         foreach (KeyValuePair<string, Color> bar in bars)
@@ -76,6 +83,38 @@ public class UIManager : SerializedMonoBehaviour
             }
         }
     }
+    
+    public void StartTimer()
+    {
+        if (timerCoroutine != null)
+            StopCoroutine(timerCoroutine);
+
+        timerCoroutine = StartCoroutine(RunTimer());
+    }
+
+    private IEnumerator RunTimer()
+    {
+        int totalSeconds = 0;
+
+        while (true)
+        {
+            int minutes = totalSeconds / 60;
+            int seconds = totalSeconds % 60;
+            timerText.text = $"{minutes:D2}:{seconds:D2}";
+
+            yield return new WaitForSeconds(1f);
+            totalSeconds++;
+        }
+    }
+
+    public void StopTimer()
+    {
+        if (timerCoroutine != null)
+        {
+            StopCoroutine(timerCoroutine);
+            timerCoroutine = null;
+        }
+    }
 }
 
 [System.Serializable]
@@ -91,5 +130,10 @@ public class UIBar
         imageFill = bar.transform.GetChild(0).GetComponent<Image>();
         imageFill.fillAmount = _startFill;
         imageFill.color = _fillColor;
+    }
+
+    public void UpdateFill(float maxValue, float currentValue)
+    {
+        imageFill.fillAmount = currentValue / maxValue;
     }
 }
