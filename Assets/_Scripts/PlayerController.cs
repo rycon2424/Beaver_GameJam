@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player and NavMesh")]
     public NavMeshAgent playerAgent;
     public Camera mainCamera;
+    public Transform rayPoint;
     public float interactableRange = 1.5f;
 
     [Header("Camera Offset Settings")]
@@ -37,8 +38,10 @@ public class PlayerController : MonoBehaviour
                 IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
 
                 if (interactable != null)
-                {                
-                    if (Vector3.Distance(playerAgent.transform.position, hit.collider.gameObject.transform.position) <= interactableRange)
+                {    
+                    Debug.DrawLine(rayPoint.position, hit.collider.gameObject.transform.position, Color.green, 2f);
+                    Debug.Log(Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position));
+                    if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
                         interactable.OnInteract(transform);
