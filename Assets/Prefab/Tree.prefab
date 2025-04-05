@@ -605,7 +605,7 @@ MonoBehaviour:
   - {fileID: 4955640959334418294}
   force: {x: 0, y: 0, z: 0}
   health: 1
-  leafs: {fileID: 0}
+  leafs: {fileID: 8258175819570410944}
 --- !u!1 &8258175819570410944
 GameObject:
   m_ObjectHideFlags: 0
