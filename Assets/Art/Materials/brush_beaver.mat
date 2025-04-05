@@ -91,7 +91,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Boolean_7464909a34d24328b53238bb6a548ad7: 1
+    - Boolean_7464909a34d24328b53238bb6a548ad7: 0
     - LIGHTMAP: 0
     - Vector1_0a509232490646c79065304a038c73e9: 0.08
     - Vector1_661bac8b08d141f4a3d05aaa9ec91201: 0.64
