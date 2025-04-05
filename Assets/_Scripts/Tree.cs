@@ -8,7 +8,6 @@ public class Tree : MonoBehaviour, IInteractable
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] FixedJoint[] joints;
-    [SerializeField] Transform target;
     [SerializeField, ReadOnly] Vector3 dir;
     [SerializeField] float torqueForce = 800;
     [SerializeField] float force = 200;
@@ -16,15 +15,18 @@ public class Tree : MonoBehaviour, IInteractable
     [SerializeField] GameObject leafs;
 
     [Button]
-    public void OnInteract()
+    public void OnInteract(Transform playerTransform)
     {
         health--;
         if (health == 0)
         {
-            dir = transform.position - target.position;
+            dir = transform.position - playerTransform.position;
 
             rb.isKinematic = false;
-            rb.AddTorque(dir.normalized * torqueForce);
+            //rb.AddTorque(dir.normalized * torqueForce);
+            Vector3 pushPos = transform.position;
+            pushPos.y += 10;
+            rb.AddForceAtPosition(dir.normalized * torqueForce, pushPos);
 
             StartCoroutine(BreakJoints(1.75f));
         }
