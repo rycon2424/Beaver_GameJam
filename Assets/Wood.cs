@@ -7,5 +7,6 @@ public class Wood : ResourceAble, IInteractable
         base.OnInteract(playerTransform);
 
         // Do visuals
+        Destroy(gameObject);
     }
 }
