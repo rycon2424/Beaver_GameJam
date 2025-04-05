@@ -34,17 +34,19 @@ public class Wood : ResourceAble, IInteractable
         if (collector.GetLastWood() == null)
         {
             connectTo = collector.playerRb;
+            joint.connectedAnchor = new Vector3(0, -0.5f, 1);
         }
         else
         {
             connectTo = collector.GetLastWood().rb;
+            joint.connectedAnchor = new Vector3(0, 0, -1.6f);
+            //joint.anchor = new Vector3(0, 0, 1.7f);
         }
         collector.AddWood(this);
 
-        joint.connectedBody = connectTo;
         joint.autoConfigureConnectedAnchor = false;
-        joint.anchor = new Vector3(0, 0, 1.7f);
-
+        joint.connectedBody = connectTo;
+        joint.anchor = new Vector3(0, 0, 1.1f);
         joint.xMotion = ConfigurableJointMotion.Locked;
         joint.yMotion = ConfigurableJointMotion.Locked;
         joint.zMotion = ConfigurableJointMotion.Locked;

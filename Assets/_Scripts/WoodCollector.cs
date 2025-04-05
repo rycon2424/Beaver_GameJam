@@ -17,6 +17,8 @@ public class WoodCollector : MonoBehaviour
 
     public void RemoveWood(Wood wood)
     {
+        if (woods.Count == 0) return;
+
         int brokenWood = int.MaxValue;
         for (int i = 0; i < woods.Count; i++)
         {
