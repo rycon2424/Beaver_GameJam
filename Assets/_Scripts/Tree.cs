@@ -23,8 +23,6 @@ public class Tree : MonoBehaviour, IInteractable
         {
             dir = transform.position - target.position;
 
-            leafs.SetActive(false);
-
             rb.isKinematic = false;
             rb.AddTorque(dir.normalized * torqueForce);
 
@@ -35,6 +33,8 @@ public class Tree : MonoBehaviour, IInteractable
     IEnumerator BreakJoints(float delay)
     {
         yield return new WaitForSeconds(delay);
+
+        leafs.SetActive(false);
 
         for (int i = joints.Length - 1; i >= 0; i--)
         {
