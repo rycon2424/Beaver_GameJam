@@ -7,14 +7,35 @@ using UnityEngine.Serialization;
 
 public class UIManager : SerializedMonoBehaviour
 {
+    [Header("UI Elements")]
+    [SerializeField] private Dictionary<ItemTypes, Sprite> itemSprites = new Dictionary<ItemTypes, Sprite>();
+    
     [Header("Bars to spawn")]
     [SerializeField] private Dictionary<string, Color> bars = new Dictionary<string, Color>();
     
     [Header("UI References")]
     [SerializeField] private Transform barContent;
     [SerializeField] private GameObject uiBarPrefab;
+    [SerializeField] private Transform itemContent;
+    [SerializeField] private GameObject itemPrefab;
 
     private Dictionary<string, UIBar> spawnedBars = new Dictionary<string, UIBar>();
+    private Dictionary<ItemTypes, ItemVisual> itemVisuals = new Dictionary<ItemTypes, ItemVisual>();
+
+    public static UIManager Singleton;
+
+    [Button]
+    private void Debug_AddItem(ItemTypes item, int amount)
+    {
+        UpdateItem(item, amount);
+    }
+    
+    private void Awake()
+    {
+        if (Singleton != null)
+            Destroy(Singleton.gameObject);
+        Singleton = this;
+    }
 
     private void Start()
     {
@@ -27,6 +48,29 @@ public class UIManager : SerializedMonoBehaviour
             UIBar uiBar = new UIBar(go, 1, bar.Value);
             
             spawnedBars.Add(bar.Key, uiBar);
+        }
+    }
+    
+    public void UpdateItem(ItemTypes item, int amount)
+    {
+        if (itemVisuals.ContainsKey(item) == false)
+        {
+            ItemVisual iv = Instantiate(itemPrefab, itemContent).GetComponent<ItemVisual>();
+        
+            iv.Setup(itemSprites[item], amount);
+            itemVisuals.Add(item, iv);
+        }
+        else
+        {
+            itemVisuals[item].UpdateCount(amount);
+
+            if (itemVisuals[item].count <= 0)
+            {
+                GameObject visual = itemVisuals[item].gameObject;
+                itemVisuals.Remove(item);
+                
+                Destroy(visual);
+            }
         }
     }
 }
