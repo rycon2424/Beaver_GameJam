@@ -6,14 +6,22 @@ using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractable
 {
+    [Title("Reference")]
     [SerializeField] Rigidbody rb;
     [SerializeField] FixedJoint[] joints;
-    [SerializeField, ReadOnly] Vector3 dir;
+    [SerializeField] GameObject leafs;
+    [Title("Setting")]
+    [SerializeField] int health = 1;
     [SerializeField] float torqueForce = 800;
     [SerializeField] float force = 200;
-    [SerializeField] int health = 1;
-    [SerializeField] GameObject leafs;
-    [SerializeField] Collider trigger;
+    [Title("Data")]
+    [SerializeField, ReadOnly] Vector3 dir;
+    Collider trigger;
+
+    void Awake()
+    {
+        trigger = GetComponent<Collider>();
+    }
 
     [Button]
     public void OnInteract(Transform playerTransform)
