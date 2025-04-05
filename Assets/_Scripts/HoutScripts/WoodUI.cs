@@ -12,9 +12,9 @@ public class WoodDisplay : MonoBehaviour
 
     void Update()
     {
-        if (WoodManager.Instance != null)
+        if (ResourceManager.Instance != null)
         {
-            woodText.text = "Hout: " + WoodManager.Instance.currentWood;
+            woodText.text = "Hout: " + ResourceManager.Instance.currentWood;
         }
     }
 }

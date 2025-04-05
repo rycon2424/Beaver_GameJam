@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SpendWood : MonoBehaviour
+public class SpendResource : MonoBehaviour
 {
-    public int cost = 1;  // De kosten in hout (standaard 1 hout)
+    public int cost = 1;  // De kosten (standaard 1)
 
     void Update()
     {
@@ -16,18 +16,18 @@ public class SpendWood : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 // Check of het object waar we op klikken dit script heeft
-                SpendWood clicked = hit.collider.GetComponent<SpendWood>();
+                SpendResource clicked = hit.collider.GetComponent<SpendResource>();
 
                 if (clicked != null && clicked == this)
                 {
-                    if (WoodManager.Instance != null)
+                    if (ResourceManager.Instance != null)
                     {
                         // Controleer of je genoeg hout hebt
-                        if (WoodManager.Instance.currentWood >= cost)
+                        if (ResourceManager.Instance.currentWood >= cost)
                         {
                             // Als je genoeg hout hebt, verlies het
-                            WoodManager.Instance.LoseWood(cost);
-                            Debug.Log("Hout uitgegeven. Nieuw totaal: " + WoodManager.Instance.currentWood);
+                            ResourceManager.Instance.LoseWood(cost);
+                            Debug.Log("Hout uitgegeven. Nieuw totaal: " + ResourceManager.Instance.currentWood);
                         }
                         else
                         {
@@ -37,7 +37,7 @@ public class SpendWood : MonoBehaviour
                     }
                     else
                     {
-                        Debug.LogWarning("WoodManager Singleton niet gevonden!");
+                        Debug.LogWarning("ResourceManager Singleton niet gevonden!");
                     }
                 }
             }
