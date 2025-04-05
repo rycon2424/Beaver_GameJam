@@ -33,9 +33,20 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
                 playerAgent.SetDestination(hit.point);
+
+                IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
+
+                if (interactable != null)
+                {                
+                    if (Vector3.Distance(playerAgent.transform.position, hit.collider.gameObject.transform.position) <= interactableRange)
+                    {
+                        playerAgent.SetDestination(playerAgent.transform.position);
+                        interactable.OnInteract(transform);
+                        return;
+                    }
+                }
                 
-                if (Vector3.Distance(playerAgent.transform.position, hit.collider.transform.position) <= interactableRange)
-                    hit.collider.GetComponent<IInteractable>()?.OnInteract(transform);
+                playerAgent.SetDestination(hit.point);
             }
         }
     }
