@@ -603,7 +603,10 @@ MonoBehaviour:
   joints:
   - {fileID: 8202684984774444161}
   - {fileID: 4955640959334418294}
-  force: {x: 800, y: 0, z: 0}
+  target: {fileID: 0}
+  dir: {x: 0, y: 0, z: 0}
+  torqueForce: 800
+  force: 25
   health: 3
   leafs: {fileID: 8258175819570410944}
 --- !u!1 &8258175819570410944
