@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimation playerAnim;
     private bool moving;
     private IInteractable currentInteractableTarget;
-    private Transform interactablePosition;
+    private Transform interactableNotInRange;
 
     private void Start()
     {
@@ -63,15 +63,15 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (interactablePosition)
+        if (interactableNotInRange) // walk till in range
         {
-            if (Vector3.Distance(rayPoint.position, interactablePosition.transform.position) <= interactableRange)
+            if (Vector3.Distance(rayPoint.position, interactableNotInRange.transform.position) <= interactableRange)
             {
                 playerAgent.SetDestination(playerAgent.transform.position);
                 currentInteractableTarget.OnInteract(transform);
 
                 currentInteractableTarget = null;
-                interactablePosition = null;
+                interactableNotInRange = null;
             }
         }
         
@@ -86,18 +86,20 @@ public class PlayerController : MonoBehaviour
 
                 if (currentInteractableTarget != null)
                 {
-                    interactablePosition = hit.collider.gameObject.transform;
-                    
                     if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
                         currentInteractableTarget.OnInteract(transform);
                     }
+                    else
+                    {
+                        interactableNotInRange = hit.collider.gameObject.transform;
+                    }
                     
                     return;
                 }
 
-                interactablePosition = null;
+                interactableNotInRange = null;
 
                 playerAgent.SetDestination(hit.point);
             }
