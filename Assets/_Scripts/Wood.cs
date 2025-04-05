@@ -39,7 +39,7 @@ public class Wood : ResourceAble, IInteractable
         else
         {
             connectTo = collector.GetLastWood().rb;
-            joint.connectedAnchor = new Vector3(0, -0.6f, -0.5f);
+            joint.connectedAnchor = new Vector3(0, 0, -1.7f);
             //joint.anchor = new Vector3(0, 0, 1.7f);
         }
         collector.AddWood(this);
