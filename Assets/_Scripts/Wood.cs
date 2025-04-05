@@ -14,7 +14,7 @@ public class Wood : ResourceAble, IInteractable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Obstacle")
+        if (collector != null && collision.gameObject.tag == "Obstacle")
         {
             collector.RemoveWood(this);
         }
@@ -22,13 +22,12 @@ public class Wood : ResourceAble, IInteractable
 
     public override void OnInteract(Transform playerTransform)
     {
+        if (joint != null) return;
+
         base.OnInteract(playerTransform);
 
-        if (joint == null)
-            joint = gameObject.AddComponent<ConfigurableJoint>();
-
+        joint = gameObject.AddComponent<ConfigurableJoint>();
         collector = playerTransform.GetComponent<WoodCollector>();
-
 
         Rigidbody connectTo;
         if (collector.GetLastWood() == null)
@@ -40,7 +39,6 @@ public class Wood : ResourceAble, IInteractable
         {
             connectTo = collector.GetLastWood().rb;
             joint.connectedAnchor = new Vector3(0, 0, -1.7f);
-            //joint.anchor = new Vector3(0, 0, 1.7f);
         }
         collector.AddWood(this);
 
