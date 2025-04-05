@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class Wood : ResourceAble, IInteractable
         }
     }
 
+    [Button]
     public override void OnInteract(Transform playerTransform)
     {
         if (joint != null) return;
@@ -38,9 +40,15 @@ public class Wood : ResourceAble, IInteractable
         else
         {
             connectTo = collector.GetLastWood().rb;
+
             joint.connectedAnchor = new Vector3(0, 0, -1.7f);
+
+            transform.position = connectTo.transform.position;
+            transform.rotation = connectTo.transform.rotation;
+
+            connectTo.linearVelocity = Vector3.zero;
+            connectTo.angularVelocity = Vector3.zero;
         }
-        collector.AddWood(this);
 
         joint.anchor = new Vector3(0, 0, 1.1f);
         joint.autoConfigureConnectedAnchor = false;
@@ -49,5 +57,7 @@ public class Wood : ResourceAble, IInteractable
         joint.yMotion = ConfigurableJointMotion.Locked;
         joint.zMotion = ConfigurableJointMotion.Locked;
         joint.enableCollision = true;
+
+        collector.AddWood(this);
     }
 }
