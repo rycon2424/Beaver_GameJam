@@ -1,20 +1,21 @@
 using TMPro;
 using UnityEngine;
 
-public class WoodDisplay : MonoBehaviour
+public class ResourceDisplay : MonoBehaviour
 {
-    private TextMeshProUGUI woodText;
+    private TextMeshProUGUI resourceText;
 
     void Start()
     {
-        woodText = GetComponent<TextMeshProUGUI>();
+        resourceText = GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
     {
         if (ResourceManager.Instance != null)
         {
-            woodText.text = "Hout: " + ResourceManager.Instance.currentWood;
+            // Zorg ervoor dat de "Food" tekst een nieuwe regel krijgt na de "Hout" tekst
+            resourceText.text = "Hout: " + ResourceManager.Instance.currentWood + "\nFood: " + ResourceManager.Instance.currentFood;
         }
     }
 }
