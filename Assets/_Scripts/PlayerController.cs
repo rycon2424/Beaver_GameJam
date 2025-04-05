@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                if (hit.collider.tag == "Tree")
+                {
+                    hit.collider.GetComponent<IInteractable>().OnInteract(transform);
+                }
                 if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, 1.0f, NavMesh.AllAreas))
                 {
                     playerAgent.SetDestination(navHit.position);
