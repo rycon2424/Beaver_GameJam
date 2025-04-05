@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpendResource : MonoBehaviour
 {
     public int cost = 1;  // De kosten (standaard 1)
+    public ResourceType resourceType;
 
     void Update()
     {
@@ -26,7 +27,7 @@ public class SpendResource : MonoBehaviour
                         if (ResourceManager.Instance.currentWood >= cost)
                         {
                             // Als je genoeg hout hebt, verlies het
-                            ResourceManager.Instance.LoseWood(cost);
+                            ResourceManager.Instance.RemoveResource(cost, resourceType);
                             Debug.Log("Hout uitgegeven. Nieuw totaal: " + ResourceManager.Instance.currentWood);
                         }
                         else

@@ -53,7 +53,7 @@ public class UIManager : SerializedMonoBehaviour
     
     public void UpdateItem(ItemTypes item, int amount)
     {
-        if (itemVisuals.ContainsKey(item) == false)
+        if (itemVisuals.ContainsKey(item) == false && amount > 0)
         {
             ItemVisual iv = Instantiate(itemPrefab, itemContent).GetComponent<ItemVisual>();
         

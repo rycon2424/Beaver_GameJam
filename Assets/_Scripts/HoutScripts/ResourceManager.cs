@@ -38,7 +38,7 @@ public class ResourceManager : MonoBehaviour
                 Debug.LogWarning("Kan geen negatief of nul aantal hout toevoegen.");
             }
         }
-        else if (resourceType == resourceType.food)
+        else if (resourceType == ResourceType.food)
         {
             if (amount > 0)
             {
@@ -54,7 +54,7 @@ public class ResourceManager : MonoBehaviour
 
     public void RemoveResource(int amountLost, ResourceType resourceType)
     {
-        if (resourceType == resourceType.wood)
+        if (resourceType == ResourceType.wood)
         {
             if (amountLost > 0 && currentWood >= amountLost) // Controleer of je genoeg hout hebt
             {
@@ -66,7 +66,7 @@ public class ResourceManager : MonoBehaviour
                 Debug.LogWarning("Je hebt niet genoeg hout om te verliezen.");
             }
         }
-        else if (resourceType == resourceType.food)
+        else if (resourceType == ResourceType.food)
         {
             if (amountLost > 0 && currentWood >= amountLost) // Controleer of je genoeg eten hebt
             {

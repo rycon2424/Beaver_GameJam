@@ -25,7 +25,7 @@ public class ClickForResource : MonoBehaviour
                     // Zorg dat we het hout toevoegen
                     if (ResourceManager.Instance != null)
                     {
-                        ResourceManager.Instance.AddWood(1);
+                        ResourceManager.Instance.AddResource(1, resourceType);
                         Debug.Log("Hout toegevoegd! Totaal hout: " + ResourceManager.Instance.currentWood);
                     }
 
