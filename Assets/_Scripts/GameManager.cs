@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public float babiesMaxFood;
     [ReadOnly] public float babiesCurrentFood;
 
+    [Header("Respawn Values")]
+    public float berriesTimer;
+    public float treeTimer;
+
     [Header("Decay Settings - Dam")]
     public float damBaseDecayRate = 0.1f;
     public float damDecayAcceleration = 0.01f;
