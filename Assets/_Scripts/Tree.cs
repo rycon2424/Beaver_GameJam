@@ -11,6 +11,7 @@ public class Tree : MonoBehaviour, IInteractable
     [Title("Reference")]
     [SerializeField] Rigidbody rb;
     [SerializeField] FixedJoint[] joints;
+    [SerializeField] Wood[] woods;
     [SerializeField] GameObject leafs;
     [Title("Setting")]
     [SerializeField] int health = 1;
@@ -25,6 +26,11 @@ public class Tree : MonoBehaviour, IInteractable
     {
         trigger = GetComponent<Collider>();
         directions.Clear();
+
+        foreach (var wood in woods)
+        {
+            wood.enabled = false;
+        }
     }
 
     [Button]
@@ -81,6 +87,10 @@ public class Tree : MonoBehaviour, IInteractable
             joints[i].GetComponent<Rigidbody>().AddForce(dir * force);
             Destroy(joints[i]);
             joints[i] = null;
+        }
+        foreach (var wood in woods)
+        {
+            wood.enabled = true;
         }
     }
 }
