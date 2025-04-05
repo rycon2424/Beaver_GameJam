@@ -26,7 +26,7 @@ public class Tree : MonoBehaviour, IInteractable
             rb.isKinematic = false;
             rb.AddTorque(dir.normalized * torqueForce);
 
-            StartCoroutine(BreakJoints(1.5f));
+            StartCoroutine(BreakJoints(1.75f));
         }
     }
 
