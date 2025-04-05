@@ -13,6 +13,7 @@ public class Tree : MonoBehaviour, IInteractable
     [SerializeField] float force = 200;
     [SerializeField] int health = 1;
     [SerializeField] GameObject leafs;
+    [SerializeField] Collider trigger;
 
     [Button]
     public void OnInteract(Transform playerTransform)
@@ -23,11 +24,10 @@ public class Tree : MonoBehaviour, IInteractable
             dir = transform.position - playerTransform.position;
 
             rb.isKinematic = false;
-            //rb.AddTorque(dir.normalized * torqueForce);
             Vector3 pushPos = transform.position;
             pushPos.y += 10;
             rb.AddForceAtPosition(dir.normalized * torqueForce, pushPos);
-
+            trigger.enabled = false;
             StartCoroutine(BreakJoints(1.75f));
         }
     }

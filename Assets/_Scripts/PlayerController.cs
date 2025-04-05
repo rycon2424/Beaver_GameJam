@@ -29,11 +29,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.tag == "Tree")
+                if (hit.collider.tag == "Interactable")
                 {
                     hit.collider.GetComponent<IInteractable>().OnInteract(transform);
+                    playerAgent.SetDestination(hit.transform.position);
                 }
                 if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, 1.0f, NavMesh.AllAreas))
                 {
