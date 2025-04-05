@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1253992819141542814}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.855, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2.95, z: 0}
+  m_LocalScale: {x: 1, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2976209081067976605}
@@ -164,8 +164,8 @@ Transform:
   m_GameObject: {fileID: 4455867793994142133}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.18, z: 0}
-  m_LocalScale: {x: 1, y: 0.35006, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2976209081067976605}
@@ -292,6 +292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 687790146355461156}
+  force: {x: 0, y: 0, z: 0}
+  health: 1
 --- !u!1 &8258175819570410944
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +305,6 @@ GameObject:
   - component: {fileID: 3845836774995889369}
   - component: {fileID: 1154520818849468836}
   - component: {fileID: 1261769123731228664}
-  - component: {fileID: 378891012728433571}
   m_Layer: 0
   m_Name: Leaf
   m_TagString: Untagged
@@ -320,8 +321,8 @@ Transform:
   m_GameObject: {fileID: 8258175819570410944}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.7, z: 0}
-  m_LocalScale: {x: 2.3576, y: 0.8417574, z: 2.3576}
+  m_LocalPosition: {x: 0, y: 5.19, z: 0}
+  m_LocalScale: {x: 2.3576, y: 2.180714, z: 2.3576}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2976209081067976605}
@@ -379,24 +380,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &378891012728433571
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8258175819570410944}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
