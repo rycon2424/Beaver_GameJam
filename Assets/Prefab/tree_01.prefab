@@ -52,7 +52,6 @@ MonoBehaviour:
   joints:
   - {fileID: 7303191408751568220}
   - {fileID: 5634511665160995034}
-  target: {fileID: 0}
   dir: {x: 0, y: 0, z: 0}
   torqueForce: 150
   force: 200
@@ -429,7 +428,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f10ebd0c619849c4c90d4a9bd7284dc7, type: 2}
+  - {fileID: 2100000, guid: 4d0c689fc421ad24ba1ade328ea24863, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
