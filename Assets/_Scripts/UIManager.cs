@@ -62,14 +62,17 @@ public class UIManager : SerializedMonoBehaviour
         }
         else
         {
-            itemVisuals[item].UpdateCount(amount);
-
-            if (itemVisuals[item].count <= 0)
-            {
-                GameObject visual = itemVisuals[item].gameObject;
-                itemVisuals.Remove(item);
+            if (itemVisuals.ContainsKey(item))
+            { 
+                itemVisuals[item].UpdateCount(amount);
                 
-                Destroy(visual);
+                if (itemVisuals[item].count <= 0)
+                {
+                    GameObject visual = itemVisuals[item].gameObject;
+                    itemVisuals.Remove(item);
+                
+                    Destroy(visual);
+                }
             }
         }
     }
