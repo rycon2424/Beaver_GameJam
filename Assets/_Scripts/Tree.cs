@@ -1,5 +1,7 @@
+using NUnit.Framework.Constraints;
 using Sirenix.OdinInspector;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
@@ -17,27 +19,53 @@ public class Tree : MonoBehaviour, IInteractable
     [Title("Data")]
     [SerializeField, ReadOnly] Vector3 dir;
     Collider trigger;
+    List<Vector3> directions = new List<Vector3>();
 
     void Awake()
     {
         trigger = GetComponent<Collider>();
+        directions.Clear();
     }
 
     [Button]
     public void OnInteract(Transform playerTransform)
     {
         health--;
-        if (health == 0)
-        {
-            dir = transform.position - playerTransform.position;
+        directions.Add((playerTransform.position - transform.position).normalized);
 
-            rb.isKinematic = false;
-            Vector3 pushPos = transform.position;
-            pushPos.y += 10;
-            rb.AddForceAtPosition(dir.normalized * torqueForce, pushPos);
-            trigger.enabled = false;
-            StartCoroutine(BreakJoints(1.75f));
+        if (health == 1)
+        {
+            StartCoroutine(DelayedDrop(Random.Range(1.5f, 3f)));
         }
+        else if (health == 0)
+        {
+            DropTree();
+        }
+    }
+
+    IEnumerator DelayedDrop(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        DropTree();
+    }
+
+    void DropTree()
+    {
+        foreach (var item in directions)
+        {
+            dir += item;
+        }
+        dir = dir.normalized;
+
+        rb.isKinematic = false;
+        Vector3 pushPos = transform.position;
+        pushPos.y += 10;
+        rb.AddForceAtPosition(dir * torqueForce, pushPos);
+        trigger.enabled = false;
+
+        StopAllCoroutines();
+        StartCoroutine(BreakJoints(1.75f));
     }
 
     IEnumerator BreakJoints(float delay)
@@ -48,7 +76,7 @@ public class Tree : MonoBehaviour, IInteractable
 
         for (int i = joints.Length - 1; i >= 0; i--)
         {
-            joints[i].GetComponent<Rigidbody>().AddForce(dir.normalized * force);
+            joints[i].GetComponent<Rigidbody>().AddForce(dir * force);
             Destroy(joints[i]);
             joints[i] = null;
         }
