@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     [Header("Player and NavMesh")]
     public NavMeshAgent playerAgent;
     public Camera mainCamera;
+    public float interactableRange = 1.5f;
 
     [Header("Camera Offset Settings")]
     public Vector3 cameraOffset = new Vector3(0, 10f, -8f);        // offset from player
@@ -29,17 +30,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
-                if (hit.collider.tag == "Interactable")
-                {
-                    hit.collider.GetComponent<IInteractable>().OnInteract(transform);
-                    playerAgent.SetDestination(hit.transform.position);
-                }
-                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navHit, 1.0f, NavMesh.AllAreas))
-                {
-                    playerAgent.SetDestination(navHit.position);
-                }
+                playerAgent.SetDestination(hit.point);
+                
+                if (Vector3.Distance(playerAgent.transform.position, hit.collider.transform.position) <= interactableRange)
+                    hit.collider.GetComponent<IInteractable>()?.OnInteract(transform);
             }
         }
     }
