@@ -6,6 +6,7 @@ public class Berries : ResourceAble, IInteractable
 {
     [FormerlySerializedAs("barries"),SerializeField]
     private GameObject[] berries;
+    private bool noBerries;
 
     private void Start()
     {
@@ -23,6 +24,9 @@ public class Berries : ResourceAble, IInteractable
                 if (berries[i].activeSelf == false)
                 {
                     berries[i].SetActive(true);
+                    health++;
+                    yielded = false;
+                    noBerries = false;
                     break;
                 }
             }
@@ -41,6 +45,12 @@ public class Berries : ResourceAble, IInteractable
             berries[i].gameObject.SetActive(true);
         }
 
-        UIManager.Singleton.UpdateItem(resourceType, 1);
+        if (noBerries == false)
+            UIManager.Singleton.UpdateItem(resourceType, 1);
+
+        if (yielded)
+        {
+            noBerries = true;
+        }
     }
 }

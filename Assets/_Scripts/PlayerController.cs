@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
 
     private PlayerAnimation playerAnim;
     private bool moving;
+    private IInteractable currentInteractableTarget;
+    private Transform interactablePosition;
 
     private void Start()
     {
@@ -61,6 +63,18 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (interactablePosition)
+        {
+            if (Vector3.Distance(rayPoint.position, interactablePosition.transform.position) <= interactableRange)
+            {
+                playerAgent.SetDestination(playerAgent.transform.position);
+                currentInteractableTarget.OnInteract(transform);
+
+                currentInteractableTarget = null;
+                interactablePosition = null;
+            }
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -68,17 +82,22 @@ public class PlayerController : MonoBehaviour
             {
                 playerAgent.SetDestination(hit.point);
 
-                IInteractable interactable = hit.collider.gameObject.GetComponent<IInteractable>();
+                currentInteractableTarget = hit.collider.gameObject.GetComponent<IInteractable>();
 
-                if (interactable != null)
+                if (currentInteractableTarget != null)
                 {
+                    interactablePosition = hit.collider.gameObject.transform;
+                    
                     if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
-                        interactable.OnInteract(transform);
-                        return;
+                        currentInteractableTarget.OnInteract(transform);
                     }
+                    
+                    return;
                 }
+
+                interactablePosition = null;
 
                 playerAgent.SetDestination(hit.point);
             }
