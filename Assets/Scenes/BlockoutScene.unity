@@ -5896,7 +5896,7 @@ MonoBehaviour:
   damCurrentHealth: 0
   babiesMaxFood: 100
   babiesCurrentFood: 0
-  berriesTimer: 0
+  berriesTimer: 20
   treeTimer: 0
   damBaseDecayRate: 0.1
   damDecayAcceleration: 0.01
