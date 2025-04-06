@@ -59,6 +59,12 @@ public class Wood : ResourceAble, IInteractable
         joint.zMotion = ConfigurableJointMotion.Locked;
         joint.enableCollision = true;
 
+        // Additional
+        joint.projectionMode = JointProjectionMode.PositionAndRotation;
+        joint.projectionDistance = 0.1f;
+        joint.projectionAngle = 1f;
+        // End
+
         collector.AddWood(this);
     }
 }
