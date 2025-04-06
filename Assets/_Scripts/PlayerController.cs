@@ -1,4 +1,3 @@
-using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
@@ -54,7 +53,11 @@ public class PlayerController : MonoBehaviour
         if (logs == 0)
             playerAgent.speed = defaultMovementSpeed;
         else
-            playerAgent.speed = defaultMovementSpeed * (1f - Math.Clamp(woodDrag * logs, 0.3f, 1));
+        {
+            float speedModifier = woodDrag * (float)logs;
+            speedModifier = Mathf.Clamp(speedModifier, 0f, 0.7f);
+            playerAgent.speed = defaultMovementSpeed * (1f - speedModifier);
+        }
     }
 
     private void Update()

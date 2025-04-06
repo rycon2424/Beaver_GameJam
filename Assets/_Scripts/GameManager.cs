@@ -44,11 +44,12 @@ public class GameManager : MonoBehaviour
     public float minY = -0.4f;
     public float maxY = 0.7f;
     public Transform deadBABIES;
+    public Transform hungerExplosion;
 
     [Header("GameOver")]
     public bool gameOver;
     public float maxWaterLevelTime = 1.5f;
-    public float gameOverWaterLevel = 3f;
+    public float gameOverWaterLevel = 8f;
 
     private Transform mainCamera;
 
@@ -146,6 +147,8 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Singleton.reasonText.text = "The kids have died of hunger!";
             StartCoroutine(LerpTransform(mainCamera, kidsGameOver, 3));
+
+            hungerExplosion.gameObject.SetActive(true);
         }
     }
 
@@ -204,7 +207,7 @@ public class GameManager : MonoBehaviour
         Vector3 endPosbabies = new Vector3(startPosbabies.x, -1.64f, startPosbabies.z);
         float elapsed = 0f;
 
-
+        deadBABIES.gameObject.SetActive(true);
         while (elapsed < duration)
         {
             float t = elapsed / duration;

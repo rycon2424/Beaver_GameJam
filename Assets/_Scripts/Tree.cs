@@ -1,9 +1,6 @@
-using NUnit.Framework.Constraints;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class Tree : MonoBehaviour, IInteractable
@@ -58,6 +55,7 @@ public class Tree : MonoBehaviour, IInteractable
         }
 
         SoundPool.Singleton.PlayRandomSound("Chop", "Chop 2");
+        // STEVEN
     }
 
     IEnumerator DelayedDrop(float delay)
