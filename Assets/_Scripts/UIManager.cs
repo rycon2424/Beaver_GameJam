@@ -20,6 +20,9 @@ public class UIManager : SerializedMonoBehaviour
     [SerializeField] private GameObject uiBarPrefab;
     [SerializeField] private Transform itemContent;
     [SerializeField] private GameObject itemPrefab;
+    [Space]
+    [SerializeField]
+    private GameObject pressAnyButtonToStart;
     
     [Header("Timer")]
     public TMP_Text timerText;
@@ -29,6 +32,8 @@ public class UIManager : SerializedMonoBehaviour
     private Dictionary<ItemTypes, ItemVisual> itemVisuals = new Dictionary<ItemTypes, ItemVisual>();
 
     public static UIManager Singleton;
+
+    private bool gameStarted;
 
     [Button]
     private void Debug_AddItem(ItemTypes item, int amount)
@@ -57,7 +62,21 @@ public class UIManager : SerializedMonoBehaviour
             spawnedBars.Add(bar.Key, uiBar);
         }
     }
-    
+
+    private void Update()
+    {
+        if (gameStarted == false)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameStarted = true;
+                FindFirstObjectByType<PlayerController>().lockPlayer = false;
+                pressAnyButtonToStart.gameObject.SetActive(false);
+                GameManager.Singleton.StartGame();
+            }
+        }
+    }
+
     public void UpdateItem(ItemTypes item, int amount)
     {
         if (itemVisuals.ContainsKey(item) == false && amount > 0)
