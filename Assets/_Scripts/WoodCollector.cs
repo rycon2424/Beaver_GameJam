@@ -14,15 +14,17 @@ public class WoodCollector : MonoBehaviour
 
         return woods[woods.Count - 1];
     }
-    
+
     public void RemoveAllWood()
     {
         RemoveWood(woods[0]);
+        UIManager.Singleton.UpdateItem(ItemTypes.Wood, -100);
     }
-   
+
     public void RemoveWood(Wood wood)
     {
-        if (woods.Count == 0) return;
+        if (woods.Count == 0)
+            return;
 
         int brokenWood = int.MaxValue;
         for (int i = 0; i < woods.Count; i++)
@@ -40,6 +42,7 @@ public class WoodCollector : MonoBehaviour
             {
                 Destroy(woods[i].joint);
                 woods.RemoveAt(i);
+                UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
             }
         }
     }

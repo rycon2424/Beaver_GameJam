@@ -26,7 +26,8 @@ public class WoodForDam : MonoBehaviour
                 {
                     Destroy(wCollector.woods[i].gameObject);
                     wCollector.woods.RemoveAt(i);
-
+                    UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
+                    
                     DamManager.Singleton.ChangeHealth();
                 }
 
