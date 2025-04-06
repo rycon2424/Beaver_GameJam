@@ -6,6 +6,7 @@ public class KidsManager : MonoBehaviour
 {
     public Animator[] kidsAnim;
     public GameObject babyCam;
+    public GameObject eatingBeries;
 
     private Coroutine stateHandlers;
 
@@ -37,8 +38,17 @@ public class KidsManager : MonoBehaviour
                 UIManager.Singleton.UpdateItem(ItemTypes.Berries, -currentBerries);
 
                 PlayAnimation("EATING");
+                eatingBeries.SetActive(true);
+                StartCoroutine(Eating());
+
             }
         }
+    }
+
+    private IEnumerator Eating()
+    {
+        yield return new WaitForSeconds(2);
+        eatingBeries.SetActive(false);
     }
 
     public void PlayAnimation(string animationName, bool continueStates = true)
