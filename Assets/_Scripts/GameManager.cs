@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     [Header("GameOver")]
     public bool gameOver;
     public float maxWaterLevelTime = 1.5f;
-    public float gameOverWaterLevel = 3f;
+    public float gameOverWaterLevel = 8f;
 
     private Transform mainCamera;
 
@@ -204,7 +204,7 @@ public class GameManager : MonoBehaviour
         Vector3 endPosbabies = new Vector3(startPosbabies.x, -1.64f, startPosbabies.z);
         float elapsed = 0f;
 
-
+        deadBABIES.gameObject.SetActive(true);
         while (elapsed < duration)
         {
             float t = elapsed / duration;
