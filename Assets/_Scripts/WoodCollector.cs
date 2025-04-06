@@ -21,6 +21,28 @@ public class WoodCollector : MonoBehaviour
         return woods[woods.Count - 1];
     }
 
+    public int RemoveAllWood(bool destroy = false)
+    {
+        int count = 0;
+        for (int i = woods.Count - 1; i >= 0; i--)
+        {
+            Destroy(woods[i].joint);
+
+            woods[i].yielded = false;
+            woods[i].health = 1;
+            UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
+
+            if (destroy)
+                Destroy(woods[i].gameObject);
+
+            woods.RemoveAt(i);
+            count++;
+        }
+
+        playerController.UpdateMovementSpeed(woods.Count);
+        return count;
+    }
+
     public void RemoveWood(Wood wood)
     {
         if (woods.Count == 0)
@@ -41,12 +63,12 @@ public class WoodCollector : MonoBehaviour
             if (i >= brokenWood)
             {
                 Destroy(woods[i].joint);
-                
+
                 woods[i].yielded = false;
                 woods[i].health = 1;
-                
+
                 woods.RemoveAt(i);
-                
+
                 UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
             }
         }
