@@ -51,14 +51,17 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateMovementSpeed(int logs)
     {
-        playerAgent.speed = defaultMovementSpeed * (1f - woodDrag * logs);
+        if (logs == 0)
+            playerAgent.speed = defaultMovementSpeed;
+        else
+            playerAgent.speed = defaultMovementSpeed * (1f - woodDrag * logs);
     }
 
     private void Update()
     {
         if (lockPlayer)
             return;
-        
+
         HandleAnimation();
         HandleMovement();
         HandleZoom(); // New: handle zooming
@@ -75,7 +78,7 @@ public class PlayerController : MonoBehaviour
     private void HandleAnimation()
     {
         walkDirectionIndicator.transform.position = playerAgent.destination;
-        
+
         if (moving == false && playerAgent.hasPath)
         {
             moving = true;
