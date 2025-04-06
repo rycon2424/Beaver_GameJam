@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3855747306981666123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4788786244396778278, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_Name
+      value: AudioZone_Waterfall Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5089606063621031806, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f51bc514b1928c4387210fb970a3fa9, type: 3}
+    - target: {fileID: 5089606063621031806, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f51bc514b1928c4387210fb970a3fa9, type: 3}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090929852563481399, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 776575dbc703bfd41976d9d71c3149b8, type: 3}
