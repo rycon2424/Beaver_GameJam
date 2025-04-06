@@ -92,5 +92,10 @@ public class Tree : MonoBehaviour, IInteractable
         {
             wood.enabled = true;
         }
+
+        yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
+        GameManager.Singleton.RespawnTree(transform);
+        yield return new WaitForFixedUpdate();
+        Destroy(gameObject);
     }
 }

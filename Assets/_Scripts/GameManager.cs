@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [Header("Respawn Values")]
     public float berriesTimer;
     public float treeTimer;
+    [Space]
+    public GameObject treePrefab;
 
     [Header("Decay Settings - Dam")]
     public float damBaseDecayRate = 0.1f;
@@ -99,5 +101,10 @@ public class GameManager : MonoBehaviour
         UIManager.Singleton.StopTimer();
         
         Debug.Log("Game over!");
+    }
+
+    public void RespawnTree(Transform respawn)
+    {
+        Instantiate(treePrefab, respawn.position, respawn.rotation);
     }
 }
