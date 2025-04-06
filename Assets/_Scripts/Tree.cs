@@ -56,6 +56,8 @@ public class Tree : MonoBehaviour, IInteractable
         {
             DropTree();
         }
+
+        SoundPool.Singleton.PlayRandomSound("Chop", "Chop 2");
     }
 
     IEnumerator DelayedDrop(float delay)
@@ -109,6 +111,7 @@ public class Tree : MonoBehaviour, IInteractable
             wood.enabled = true;
         }
 
+        SoundPool.Singleton.PlayRandomSound("Log Impact");
         ScreenShake.Instance.Shake(.15f, .07f);
 
         // Respawn
