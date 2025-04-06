@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -29,46 +30,54 @@ public class Wood : ResourceAble, IInteractable
 
         base.OnInteract(playerTransform);
 
-        joint = gameObject.AddComponent<ConfigurableJoint>();
+        Rigidbody connectTo;
         collector = playerTransform.GetComponent<WoodCollector>();
 
-        Rigidbody connectTo;
         if (collector.GetLastWood() == null)
         {
             connectTo = collector.playerRb;
-            joint.connectedAnchor = new Vector3(0, -0.55f, 1);
+            joint = gameObject.AddComponent<ConfigurableJoint>();
+
+            StartCoroutine(AttachJointAfterOneFrame(connectTo, new Vector3(0, -0.55f, 1)));
         }
         else
         {
             connectTo = collector.GetLastWood().rb;
 
-            joint.connectedAnchor = new Vector3(0, 0, -1.7f);
-
             Vector3 offset = connectTo.transform.forward * -2.6f;
             transform.position = connectTo.transform.position + offset;
             transform.rotation = connectTo.transform.rotation;
 
-            connectTo.linearVelocity = Vector3.zero;
-            connectTo.angularVelocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+
+            StartCoroutine(AttachJointAfterOneFrame(connectTo, new Vector3(0, 0, -1.7f)));
         }
 
-        joint.anchor = new Vector3(0, 0, 1.1f);
-        joint.autoConfigureConnectedAnchor = false;
+        SoundPool.Singleton.PlayRandomSound("Log 1", "Log 2");
+        collector.AddWood(this);
+    }
+
+    IEnumerator AttachJointAfterOneFrame(Rigidbody connectTo, Vector3 connectedAnchor)
+    {
+        rb.isKinematic = true;
+        yield return new WaitForFixedUpdate();
+        rb.isKinematic = false;
+
+        joint = gameObject.AddComponent<ConfigurableJoint>();
+
         joint.connectedBody = connectTo;
+        joint.autoConfigureConnectedAnchor = false;
+        joint.anchor = new Vector3(0, 0, 1.1f);
+        joint.connectedAnchor = connectedAnchor;
+
         joint.xMotion = ConfigurableJointMotion.Locked;
         joint.yMotion = ConfigurableJointMotion.Locked;
         joint.zMotion = ConfigurableJointMotion.Locked;
         joint.enableCollision = true;
 
-        // Additional
         joint.projectionMode = JointProjectionMode.PositionAndRotation;
         joint.projectionDistance = 0.1f;
         joint.projectionAngle = 1f;
-        // End
-
-        SoundPool.Singleton.PlayRandomSound("Log 1", "Log 2");
-        collector.AddWood(this);
-
-
     }
 }
