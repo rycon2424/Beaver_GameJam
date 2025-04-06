@@ -49,8 +49,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1972efcf6aea264eafd8c52932fb028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab: {fileID: 2363005424356141768}
   rb: {fileID: 3476635282140788099}
+  colliders:
+  - {fileID: 2752995116226345389}
+  - {fileID: 7028819828021176547}
+  - {fileID: 3281153993532426017}
   joints:
   - {fileID: 7303191408751568220}
   - {fileID: 5634511665160995034}
@@ -80,9 +83,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Height: 10
+  m_Height: 5.139226
   m_Direction: 1
-  m_Center: {x: 0, y: 2.86, z: 0}
+  m_Center: {x: 0, y: 0.42961264, z: 0}
 --- !u!1 &2577781761961753625
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class Tree : MonoBehaviour, IInteractable
 {
     [Title("Reference")]
     [SerializeField] Rigidbody rb;
+    [SerializeField]
+    private Collider[] colliders;
     [SerializeField] FixedJoint[] joints;
     [SerializeField] Wood[] woods;
     [SerializeField] GameObject leafs;
@@ -30,6 +32,11 @@ public class Tree : MonoBehaviour, IInteractable
         foreach (var wood in woods)
         {
             wood.enabled = false;
+        }
+
+        foreach (var col in colliders)
+        {
+            col.enabled = false;
         }
     }
 
@@ -60,6 +67,11 @@ public class Tree : MonoBehaviour, IInteractable
 
     void DropTree()
     {
+        foreach (var col in colliders)
+        {
+            col.enabled = true;
+        }
+        
         foreach (var item in directions)
         {
             dir += item;

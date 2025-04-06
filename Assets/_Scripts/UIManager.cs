@@ -28,6 +28,7 @@ public class UIManager : SerializedMonoBehaviour
     
     [Header("Timer")]
     public TMP_Text timerText;
+    public TMP_Text highscore;
     private Coroutine timerCoroutine;
 
     [HideInInspector] public Dictionary<string, UIBar> spawnedBars = new Dictionary<string, UIBar>();
@@ -54,6 +55,11 @@ public class UIManager : SerializedMonoBehaviour
     {
         timerText.text = "";
         spawnedBars = new Dictionary<string, UIBar>();
+
+        if (PlayerPrefs.HasKey("Highscore"))
+        {
+            highscore.text = "Highscore: " +  PlayerPrefs.GetString("Highscore");
+        }
         
         foreach (KeyValuePair<string, Color> bar in bars)
         {
@@ -130,6 +136,7 @@ public class UIManager : SerializedMonoBehaviour
 
     public void StopTimer()
     {
+        PlayerPrefs.SetString("Highscore", timerText.text);
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);

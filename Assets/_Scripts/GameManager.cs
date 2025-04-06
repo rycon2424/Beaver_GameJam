@@ -3,6 +3,7 @@ using System.Collections;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -159,6 +160,9 @@ public class GameManager : MonoBehaviour
         subject.rotation = endRotation;
 
         UIManager.Singleton.gameOverText.SetActive(true);
+
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void UpdateWater()
