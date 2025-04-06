@@ -44,7 +44,8 @@ public class Wood : ResourceAble, IInteractable
 
             joint.connectedAnchor = new Vector3(0, 0, -1.7f);
 
-            transform.position = connectTo.transform.position;
+            Vector3 offset = connectTo.transform.forward * -2.6f;
+            transform.position = connectTo.transform.position + offset;
             transform.rotation = connectTo.transform.rotation;
 
             connectTo.linearVelocity = Vector3.zero;
