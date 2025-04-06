@@ -64482,15 +64482,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damMaxHealth: 30
   damCurrentHealth: 0
-  babiesMaxFood: 50
+  babiesMaxFood: 30
   babiesCurrentFood: 0
   berriesTimer: 45
   treeTimer: 20
   treePrefab: {fileID: 2363005424356141768, guid: 69bde5ac2df9f2141b5a47697735a46c, type: 3}
-  damBaseDecayRate: 0.005
-  damDecayAcceleration: 0.00125
-  babiesBaseDecayRate: 0.03
-  babiesDecayAcceleration: 0.0025
+  damBaseDecayRate: 0.006
+  damDecayAcceleration: 0.0015
+  babiesBaseDecayRate: 0.015
+  babiesDecayAcceleration: 0.00125
   tutorials:
   - {fileID: 1737847995}
   - {fileID: 1850525908}
