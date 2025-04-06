@@ -161,6 +161,11 @@ public class GameManager : MonoBehaviour
 
         UIManager.Singleton.gameOverText.SetActive(true);
 
+        if (babiesCurrentFood <= 0)
+        {
+            KidsManager.Singleton.PlayAnimation("DIE", false);
+        }
+
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
