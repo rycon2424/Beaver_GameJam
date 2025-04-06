@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
             damCurrentHealth = Mathf.Max(0f, damCurrentHealth - damCurrentDecayRate * delta);
             babiesCurrentFood = Mathf.Max(0f, babiesCurrentFood - babiesCurrentDecayRate * delta);
 
+            babiesCurrentFood = Mathf.Clamp(babiesCurrentFood, 0, babiesMaxFood);
+            
             // Increase each decay rate over time
             damCurrentDecayRate += damDecayAcceleration * delta;
             babiesCurrentDecayRate += babiesDecayAcceleration * delta;

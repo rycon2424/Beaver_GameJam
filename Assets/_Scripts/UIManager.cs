@@ -29,7 +29,7 @@ public class UIManager : SerializedMonoBehaviour
     private Coroutine timerCoroutine;
 
     [HideInInspector] public Dictionary<string, UIBar> spawnedBars = new Dictionary<string, UIBar>();
-    private Dictionary<ItemTypes, ItemVisual> itemVisuals = new Dictionary<ItemTypes, ItemVisual>();
+    [HideInInspector] public Dictionary<ItemTypes, ItemVisual> itemVisuals = new Dictionary<ItemTypes, ItemVisual>();
 
     public static UIManager Singleton;
 

@@ -1943,31 +1943,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.680107
+      value: -1.2751517
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.740963
+      value: -0.1839366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.53752
+      value: 1.1290877
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.050620917
+      value: -0.082901366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0012990976
+      value: -0.004702512
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99838835
+      value: -0.9962275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.025621738
+      value: 0.025219986
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2030,10 +2030,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 81013625}
   - {fileID: 1307697264}
+  - {fileID: 81013625}
   - {fileID: 1440604321}
   - {fileID: 960553544}
+  - {fileID: 709573600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &443120909
@@ -3331,8 +3332,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 709573600}
+  - component: {fileID: 709573601}
+  - component: {fileID: 709573602}
   m_Layer: 0
-  m_Name: Babies
+  m_Name: Kids Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3346,16 +3349,49 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709573599}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.471107, y: -22.8, z: 30.52352}
+  m_LocalRotation: {x: -0, y: 0.13328543, z: -0, w: 0.9910777}
+  m_LocalPosition: {x: 29.182232, y: -6.6305375, z: 15.923247}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1321720278}
   - {fileID: 432227318}
   - {fileID: 1075039767}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 437595385}
+  m_LocalEulerAnglesHint: {x: 0, y: 15.319, z: 0}
+--- !u!114 &709573601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709573599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f31176442651594381d86a5d7b3d779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &709573602
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709573599}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1 &721719238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4913,31 +4949,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.1841087
+      value: -0.9206823
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.740963
+      value: -0.1839366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.06852
+      value: 1.712463
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.050620917
+      value: -0.082901366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0012990976
+      value: -0.004702512
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99838835
+      value: -0.9962275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.025621738
+      value: 0.025219986
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5881,13 +5917,13 @@ MonoBehaviour:
   damCurrentHealth: 0
   babiesMaxFood: 100
   babiesCurrentFood: 0
-  berriesTimer: 20
-  treeTimer: 10
+  berriesTimer: 45
+  treeTimer: 20
   treePrefab: {fileID: 2363005424356141768, guid: 69bde5ac2df9f2141b5a47697735a46c, type: 3}
   damBaseDecayRate: 0.01
   damDecayAcceleration: 0.0025
-  babiesBaseDecayRate: 0.05
-  babiesDecayAcceleration: 0.005
+  babiesBaseDecayRate: 0.025
+  babiesDecayAcceleration: 0.001
   tutorials:
   - {fileID: 1737847995}
   - {fileID: 1850525908}
@@ -5921,31 +5957,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.885109
+      value: -0.4835657
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.740963
+      value: -0.1839366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.63152
+      value: 1.2484602
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.050620917
+      value: -0.082901366
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0012990976
+      value: -0.004702512
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.99838835
+      value: -0.9962275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.025621738
+      value: 0.025219986
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e297283c96660fb4c87bf44a603edb25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22375,7 +22411,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 8397936772729041087}
   - {fileID: 14540718}
-  - {fileID: 709573600}
   - {fileID: 7689295378890269265}
   - {fileID: 1948133064901708222}
   - {fileID: 1246697269}
