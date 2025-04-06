@@ -69,7 +69,9 @@ public class GameManager : MonoBehaviour
 
             UIManager.Singleton.spawnedBars["Kids Needs"].UpdateFill(babiesMaxFood, babiesCurrentFood);
             UIManager.Singleton.spawnedBars["Dam Health"].UpdateFill(damMaxHealth, damCurrentHealth);
-            
+
+            DamManager.Singleton.ChangeHealth();
+
             yield return null;
         }
     }

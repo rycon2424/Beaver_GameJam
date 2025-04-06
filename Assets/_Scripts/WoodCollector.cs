@@ -19,7 +19,7 @@ public class WoodCollector : MonoBehaviour
     {
         RemoveWood(woods[0]);
     }
-
+   
     public void RemoveWood(Wood wood)
     {
         if (woods.Count == 0) return;
