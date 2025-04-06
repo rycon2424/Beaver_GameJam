@@ -42314,6 +42314,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1961231726}
     m_Modifications:
     - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
       objectReference: {fileID: 0}
@@ -42322,16 +42326,40 @@ PrefabInstance:
       value: VFX_Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42374,16 +42402,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
@@ -68029,6 +68073,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1961231726}
     m_Modifications:
     - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
       objectReference: {fileID: 0}
@@ -68036,17 +68084,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Explosion (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 801097856566063378, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68089,16 +68165,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
@@ -103267,6 +103359,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1961231726}
     m_Modifications:
     - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 128788950831370183, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5
       objectReference: {fileID: 0}
@@ -103274,17 +103370,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Explosion (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 801097856566063378, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1149422644061484866, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1895054625529073483, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3891809435982148285, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4701985730594954203, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: m_LocalPosition.x
@@ -103327,16 +103451,32 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933672046074194474, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5208877071324434880, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5599834119113933776, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6946466949100292381, guid: 14643a976445111458fc9245ab619e82, type: 3}
       propertyPath: startDelay.scalar
@@ -106545,7 +106685,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1961231726
 Transform:
   m_ObjectHideFlags: 0
