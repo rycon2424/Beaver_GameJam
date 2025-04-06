@@ -42,6 +42,7 @@ public class SoundPool : MonoBehaviour
         {
             if (sources[i].isPlaying == false)
             {
+                sources[i].clip = clipDictionary[audioClipName];
                 sources[i].Play();
                 return;
             }
