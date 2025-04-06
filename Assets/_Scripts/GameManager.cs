@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public Transform water;
     public float minY = -0.4f;
     public float maxY = 0.7f;
+    public Transform deadBABIES;
 
     [Header("GameOver")]
     public bool gameOver;
@@ -199,12 +200,16 @@ public class GameManager : MonoBehaviour
     {
         Vector3 startPos = water.position;
         Vector3 endPos = new Vector3(startPos.x, targetY, startPos.z);
+        Vector3 startPosbabies = deadBABIES.position;
+        Vector3 endPosbabies = new Vector3(startPosbabies.x, -1.64f, startPosbabies.z);
         float elapsed = 0f;
+
 
         while (elapsed < duration)
         {
             float t = elapsed / duration;
             water.position = Vector3.Lerp(startPos, endPos, t);
+            deadBABIES.position= Vector3.Lerp(startPosbabies, endPosbabies, t);
             elapsed += Time.deltaTime;
             yield return null;
         }
