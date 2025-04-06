@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         if (logs == 0)
             playerAgent.speed = defaultMovementSpeed;
         else
-            playerAgent.speed = defaultMovementSpeed * (1f - woodDrag * logs);
+            playerAgent.speed = defaultMovementSpeed * (1f - Math.Clamp(woodDrag * logs, 0.1f, 1));
     }
 
     private void Update()
