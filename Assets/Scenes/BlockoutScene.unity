@@ -8254,7 +8254,7 @@ MonoBehaviour:
   - {fileID: 1321720280}
   - {fileID: 432227320}
   - {fileID: 1075039769}
-  babyCam: {fileID: 0}
+  babyCam: {fileID: 628784279}
 --- !u!65 &709573602
 BoxCollider:
   m_ObjectHideFlags: 0
