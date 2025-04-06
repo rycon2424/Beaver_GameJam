@@ -84,6 +84,8 @@ public class Tree : MonoBehaviour, IInteractable
         rb.AddForceAtPosition(dir * torqueForce, pushPos);
         trigger.enabled = false;
 
+        SoundPool.Singleton.PlaySound("Wood Breaking");
+
         StopAllCoroutines();
         StartCoroutine(BreakJoints(1.75f));
     }
