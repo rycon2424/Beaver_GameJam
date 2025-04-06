@@ -67,6 +67,8 @@ public class Tree : MonoBehaviour, IInteractable
 
     void DropTree()
     {
+        ScreenShake.Instance.Shake();
+
         foreach (var col in colliders)
         {
             col.enabled = true;
