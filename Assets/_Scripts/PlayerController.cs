@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool lockPlayer;
 
     private PlayerAnimation playerAnim;
-    private bool moving;
+    public bool moving;
     private IInteractable currentInteractableTarget;
     private Transform interactableNotInRange;
 
