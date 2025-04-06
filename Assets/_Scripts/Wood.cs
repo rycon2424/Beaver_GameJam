@@ -36,7 +36,7 @@ public class Wood : ResourceAble, IInteractable
         if (collector.GetLastWood() == null)
         {
             connectTo = collector.playerRb;
-            joint.connectedAnchor = new Vector3(0, -0.7f, 1);
+            joint.connectedAnchor = new Vector3(0, -0.55f, 1);
         }
         else
         {
