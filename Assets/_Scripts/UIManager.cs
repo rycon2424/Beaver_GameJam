@@ -60,15 +60,6 @@ public class UIManager : SerializedMonoBehaviour
         {
             highscore.text = "Highscore: " +  PlayerPrefs.GetString("Highscore");
         }
-        
-        foreach (KeyValuePair<string, Color> bar in bars)
-        {
-            GameObject go = Instantiate(uiBarPrefab, barContent);
-
-            UIBar uiBar = new UIBar(go, 1, bar.Value);
-            
-            spawnedBars.Add(bar.Key, uiBar);
-        }
     }
 
     private void Update()
@@ -76,7 +67,16 @@ public class UIManager : SerializedMonoBehaviour
         if (gameStarted == false)
         {
             if (Input.GetMouseButtonDown(0))
-            {
+            {        
+                foreach (KeyValuePair<string, Color> bar in bars)
+                {
+                    GameObject go = Instantiate(uiBarPrefab, barContent);
+
+                    UIBar uiBar = new UIBar(go, 1, bar.Value);
+            
+                    spawnedBars.Add(bar.Key, uiBar);
+                }
+                
                 gameStarted = true;
                 FindFirstObjectByType<PlayerController>().lockPlayer = false;
                 pressAnyButtonToStart.gameObject.SetActive(false);
