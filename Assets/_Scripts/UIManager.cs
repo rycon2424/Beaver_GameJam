@@ -23,6 +23,8 @@ public class UIManager : SerializedMonoBehaviour
     [Space]
     [SerializeField]
     private GameObject pressAnyButtonToStart;
+    public GameObject gameOverText;
+    public TMP_Text reasonText;
     
     [Header("Timer")]
     public TMP_Text timerText;

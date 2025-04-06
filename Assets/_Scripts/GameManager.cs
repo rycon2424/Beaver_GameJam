@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Manager")]
     public float damMaxHealth;
-    [ReadOnly] public float damCurrentHealth;
+    [ReadOnly]
+    public float damCurrentHealth;
 
     public float babiesMaxFood;
-    [ReadOnly] public float babiesCurrentFood;
+    [ReadOnly]
+    public float babiesCurrentFood;
 
     [Header("Respawn Values")]
     public float berriesTimer;
@@ -34,13 +36,17 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public GameObject[] tutorials;
+    public Transform damGameOver;
+    public Transform kidsGameOver;
     [Space]
     public Transform water;
     public float minY = -0.4f;
     public float maxY = 0.7f;
-    
+
     [Header("GameOver")]
     public bool gameOver;
+
+    private Transform mainCamera;
 
     private void Awake()
     {
@@ -50,6 +56,11 @@ public class GameManager : MonoBehaviour
         }
 
         Singleton = this;
+    }
+
+    private void Start()
+    {
+        mainCamera = Camera.main.transform;
     }
 
     [Button]
@@ -86,7 +97,8 @@ public class GameManager : MonoBehaviour
             babiesCurrentFood = Mathf.Max(0f, babiesCurrentFood - babiesCurrentDecayRate * delta);
 
             babiesCurrentFood = Mathf.Clamp(babiesCurrentFood, 0, babiesMaxFood);
-            
+            damCurrentHealth = Mathf.Clamp(damCurrentHealth, 0, damMaxHealth);
+
             // Increase each decay rate over time
             damCurrentDecayRate += damDecayAcceleration * delta;
             babiesCurrentDecayRate += babiesDecayAcceleration * delta;
@@ -97,7 +109,7 @@ public class GameManager : MonoBehaviour
             DamManager.Singleton.ChangeHealth();
 
             UpdateWater();
-            
+
             yield return null;
 
             if (damCurrentHealth <= 0 || babiesCurrentFood <= 0)
@@ -105,10 +117,48 @@ public class GameManager : MonoBehaviour
                 gameOver = true;
             }
         }
-        
+
         UIManager.Singleton.StopTimer();
-        
-        Debug.Log("Game over!");
+        FindFirstObjectByType<PlayerController>().lockPlayer = true;
+
+        yield return new WaitForFixedUpdate();
+
+        if (damCurrentHealth <= 0)
+        {
+            UIManager.Singleton.reasonText.text = "Your land got flooded!";
+            StartCoroutine(LerpTransform(mainCamera, damGameOver, 3));
+        }
+        else
+        {
+            UIManager.Singleton.reasonText.text = "The kids have died of hunger!";
+            StartCoroutine(LerpTransform(mainCamera, kidsGameOver, 3));
+        }
+    }
+
+    public IEnumerator LerpTransform(Transform subject, Transform target, float duration)
+    {
+        Vector3 startPosition = subject.position;
+        Quaternion startRotation = subject.rotation;
+
+        Vector3 endPosition = target.position;
+        Quaternion endRotation = target.rotation;
+
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            float t = timeElapsed / duration;
+            subject.position = Vector3.Lerp(startPosition, endPosition, t);
+            subject.rotation = Quaternion.Lerp(startRotation, endRotation, t);
+
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        subject.position = endPosition;
+        subject.rotation = endRotation;
+
+        UIManager.Singleton.gameOverText.SetActive(true);
     }
 
     private void UpdateWater()

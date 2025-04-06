@@ -2480,6 +2480,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503964967}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &507436543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 507436544}
+  m_Layer: 0
+  m_Name: DamGameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &507436544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507436543}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.24716966, y: 0.059057046, z: -0.014704912, w: -0.9670591}
+  m_LocalPosition: {x: -3.164904, y: 3.527032, z: 7.4237576}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307697264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &507703502
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,11 +6079,13 @@ MonoBehaviour:
   treePrefab: {fileID: 2363005424356141768, guid: 69bde5ac2df9f2141b5a47697735a46c, type: 3}
   damBaseDecayRate: 0.01
   damDecayAcceleration: 0.0025
-  babiesBaseDecayRate: 0.025
+  babiesBaseDecayRate: 0.04
   babiesDecayAcceleration: 0.001
   tutorials:
   - {fileID: 1737847995}
   - {fileID: 1850525908}
+  damGameOver: {fileID: 507436544}
+  kidsGameOver: {fileID: 1537809343}
   water: {fileID: 1479007419}
   minY: -0.4
   maxY: 0.7
@@ -6071,6 +6104,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 481875020}
+  - {fileID: 507436544}
+  - {fileID: 1537809343}
   m_Father: {fileID: 437595385}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1321720277
@@ -7315,6 +7350,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506243723}
   m_Mesh: {fileID: -6904183388969031478, guid: fd5d19945f120494e8ac8f34a496d5f2, type: 3}
+--- !u!1 &1537809342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537809343}
+  m_Layer: 0
+  m_Name: KidsGameOver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537809343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537809342}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.2380094, y: -0.38126442, z: 0.102684386, w: -0.88738096}
+  m_LocalPosition: {x: 25.301403, y: -2.3443055, z: 13.365614}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1307697264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1540831522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 957c906808f96d24fb22803e331a1129, type: 3}
