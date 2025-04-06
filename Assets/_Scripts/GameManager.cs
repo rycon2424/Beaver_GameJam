@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
 
     [Header("GameOver")]
     public bool gameOver;
+    public float maxWaterLevelTime = 1.5f;
+    public float gameOverWaterLevel = 3f;
 
     private Transform mainCamera;
 
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // Wanneer je Game Over bent
         UIManager.Singleton.StopTimer();
         FindFirstObjectByType<PlayerController>().lockPlayer = true;
 
@@ -131,7 +134,13 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Singleton.reasonText.text = "Your land got flooded!";
             StartCoroutine(LerpTransform(mainCamera, damGameOver, 3));
+
+            babiesCurrentFood = 0;
+
+            // Water vliegt omhoog in 1.5 seconden naar maxY
+            StartCoroutine(RaiseWaterRapidly(gameOverWaterLevel, maxWaterLevelTime));
         }
+
         else
         {
             UIManager.Singleton.reasonText.text = "The kids have died of hunger!";
@@ -185,4 +194,23 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(treePrefab, respawn.position, respawn.rotation);
     }
+
+    private IEnumerator RaiseWaterRapidly(float targetY, float duration)
+    {
+        Vector3 startPos = water.position;
+        Vector3 endPos = new Vector3(startPos.x, targetY, startPos.z);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            water.position = Vector3.Lerp(startPos, endPos, t);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Zorg dat hij perfect eindigt
+        water.position = endPos;
+    }
+
 }
