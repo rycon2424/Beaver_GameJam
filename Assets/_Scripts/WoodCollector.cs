@@ -35,7 +35,12 @@ public class WoodCollector : MonoBehaviour
             if (i >= brokenWood)
             {
                 Destroy(woods[i].joint);
+                
+                woods[i].yielded = false;
+                woods[i].health = 1;
+                
                 woods.RemoveAt(i);
+                
                 UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
             }
         }
