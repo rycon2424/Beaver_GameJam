@@ -111,7 +111,8 @@ public class Tree : MonoBehaviour, IInteractable
 
         ScreenShake.Instance.Shake(.15f, .07f);
 
-        yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
-        GameManager.Singleton.RespawnTree(transform);
+        // Respawn
+        //yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
+        //GameManager.Singleton.RespawnTree(transform);
     }
 }
