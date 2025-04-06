@@ -24,7 +24,7 @@ public class Wood : ResourceAble, IInteractable
     [Button]
     public override void OnInteract(Transform playerTransform)
     {
-        if (joint != null) return;
+        if (joint != null || enabled == false) return;
 
         base.OnInteract(playerTransform);
 
