@@ -6,6 +6,12 @@ public class WoodCollector : MonoBehaviour
 {
     public Rigidbody playerRb;
     public List<Wood> woods = new List<Wood>();
+    PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
 
     public Wood GetLastWood()
     {
@@ -39,10 +45,13 @@ public class WoodCollector : MonoBehaviour
                 UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
             }
         }
+
+        playerController.UpdateMovementSpeed(woods.Count);
     }
 
     public void AddWood(Wood wood)
     {
         woods.Add(wood);
+        playerController.UpdateMovementSpeed(woods.Count);
     }
 }
