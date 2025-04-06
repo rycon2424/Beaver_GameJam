@@ -48,4 +48,24 @@ public class SoundPool : MonoBehaviour
             }
         }
     }
+
+    public void PlayRandomSound(params string[] audioClipNames)
+    {
+        if (audioClipNames == null || audioClipNames.Length == 0)
+            return;
+
+        string selectedClipName = audioClipNames[Random.Range(0, audioClipNames.Length)];
+
+        for (int i = 0; i < sources.Count; i++)
+        {
+            if (!sources[i].isPlaying)
+            {
+                sources[i].clip = clipDictionary[selectedClipName];
+                sources[i].Play();
+                return;
+            }
+        }
+    }
+
+
 }
