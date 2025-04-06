@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour
     private float damCurrentDecayRate;
     private float babiesCurrentDecayRate;
 
+    [Header("References")]
+    public GameObject[] tutorials;
+    
+    [Header("GameOver")]
+    public bool gameOver;
+
     private void Awake()
     {
         if (Singleton != null)
@@ -50,12 +56,22 @@ public class GameManager : MonoBehaviour
         babiesCurrentDecayRate = babiesBaseDecayRate;
 
         UIManager.Singleton.StartTimer();
+        StartCoroutine(HideTutorials());
         StartCoroutine(GameLoop());
+    }
+
+    private IEnumerator HideTutorials()
+    {
+        foreach (GameObject go in tutorials)
+            go.SetActive(true);
+        yield return new WaitForSeconds(10);
+        foreach (GameObject go in tutorials)
+            go.SetActive(false);
     }
 
     private IEnumerator GameLoop()
     {
-        while (true)
+        while (gameOver == false)
         {
             float delta = Time.deltaTime;
 
@@ -73,6 +89,15 @@ public class GameManager : MonoBehaviour
             DamManager.Singleton.ChangeHealth();
 
             yield return null;
+
+            if (damCurrentHealth <= 0 || babiesCurrentFood <= 0)
+            {
+                gameOver = true;
+            }
         }
+        
+        UIManager.Singleton.StopTimer();
+        
+        Debug.Log("Game over!");
     }
 }

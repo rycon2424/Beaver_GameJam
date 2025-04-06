@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public Camera mainCamera;
     public Transform rayPoint;
     public float interactableRange = 1.5f;
+    public GameObject walkDirectionIndicator;
 
     [Header("Camera Offset Settings")]
     public Vector3 cameraOffset = new Vector3(0, 10f, -8f);        // offset from player
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
     {
         playerAnim = GetComponent<PlayerAnimation>();
         playerAnim.SetRunning(false);
+
+        walkDirectionIndicator.transform.parent = null;
     }
 
     private void Update()
@@ -64,16 +67,20 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAnimation()
     {
+        walkDirectionIndicator.transform.position = playerAgent.destination;
+        
         if (moving == false && playerAgent.hasPath)
         {
             moving = true;
             playerAnim.SetRunning(true);
+            walkDirectionIndicator.SetActive(true);
         }
 
         if (moving == true && playerAgent.hasPath == false)
         {
             moving = false;
             playerAnim.SetRunning(false);
+            walkDirectionIndicator.SetActive(false);
         }
     }
 

@@ -36,13 +36,12 @@ public class Berries : ResourceAble, IInteractable
     public override void OnInteract(Transform playerTransform)
     {
         base.OnInteract(playerTransform);
+        
+        FindFirstObjectByType<PlayerAnimation>().PlayAnimation(PlayerAnimationStates.Smack);
 
-        foreach (var b in berries)
-            b.SetActive(false);
-
-        for (int i = 0; i < health; i++)
+        for (int i = 0; i < berries.Length; i++)
         {
-            berries[i].gameObject.SetActive(true);
+            berries[i].SetActive(i < health);
         }
 
         if (noBerries == false)

@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DamManager : MonoBehaviour
 {
     public static DamManager Singleton;
-
-
+    
     public List<GameObject> logVisuals = new List<GameObject>();
     public List<GameObject> waterVisuals = new List<GameObject>();
 
@@ -40,7 +38,5 @@ public class DamManager : MonoBehaviour
         {
             waterVisuals[i].SetActive(i >= currentWaterStep);
         }
-
     }
-
 }

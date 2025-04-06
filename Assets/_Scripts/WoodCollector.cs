@@ -15,12 +15,6 @@ public class WoodCollector : MonoBehaviour
         return woods[woods.Count - 1];
     }
 
-    public void RemoveAllWood()
-    {
-        RemoveWood(woods[0]);
-        UIManager.Singleton.UpdateItem(ItemTypes.Wood, -100);
-    }
-
     public void RemoveWood(Wood wood)
     {
         if (woods.Count == 0)
