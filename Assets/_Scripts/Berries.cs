@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class Berries : ResourceAble, IInteractable
 {
-    [FormerlySerializedAs("barries"),SerializeField]
+    [FormerlySerializedAs("barries"), SerializeField]
     private GameObject[] berries;
     private bool noBerries;
 
@@ -36,7 +36,7 @@ public class Berries : ResourceAble, IInteractable
     public override void OnInteract(Transform playerTransform)
     {
         base.OnInteract(playerTransform);
-        
+
         FindFirstObjectByType<PlayerAnimation>().PlayAnimation(PlayerAnimationStates.Smack);
 
         for (int i = 0; i < berries.Length; i++)
@@ -45,7 +45,12 @@ public class Berries : ResourceAble, IInteractable
         }
 
         if (noBerries == false)
+        {
             UIManager.Singleton.UpdateItem(resourceType, 1);
+            SoundPool.Singleton.PlaySound("BerryPickup");
+
+        }
+
 
         if (yielded)
         {

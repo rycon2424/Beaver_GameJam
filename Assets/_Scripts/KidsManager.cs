@@ -37,6 +37,8 @@ public class KidsManager : MonoBehaviour
                 UIManager.Singleton.UpdateItem(ItemTypes.Berries, -currentBerries);
 
                 PlayAnimation("EATING");
+                SoundPool.Singleton.PlaySound("BerryPickup");
+                SoundPool.Singleton.PlayRandomSound("NjamNjam1", "NjamNjam2", "NjamNjam3", "NjamNjam4");
             }
         }
     }

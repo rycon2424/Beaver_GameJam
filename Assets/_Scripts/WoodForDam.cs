@@ -17,8 +17,11 @@ public class WoodForDam : MonoBehaviour
             {
                 playerPresent = true;
 
+                SoundPool.Singleton.PlaySound("BerryPickup");
+
                 GameManager.Singleton.damCurrentHealth += wCollector.RemoveAllWood(true);
                 DamManager.Singleton.ChangeHealth();
+
             }
         }
     }
