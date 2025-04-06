@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
 
     [Header("References")]
     public GameObject[] tutorials;
+    [Space]
+    public Transform water;
+    public float minY = -0.4f;
+    public float maxY = 0.7f;
     
     [Header("GameOver")]
     public bool gameOver;
@@ -90,6 +94,8 @@ public class GameManager : MonoBehaviour
 
             DamManager.Singleton.ChangeHealth();
 
+            UpdateWater();
+            
             yield return null;
 
             if (damCurrentHealth <= 0 || babiesCurrentFood <= 0)
@@ -101,6 +107,14 @@ public class GameManager : MonoBehaviour
         UIManager.Singleton.StopTimer();
         
         Debug.Log("Game over!");
+    }
+
+    private void UpdateWater()
+    {
+        float newY = Mathf.Lerp(maxY, minY, damCurrentHealth / damMaxHealth);
+        Vector3 localPos = water.localPosition;
+        localPos.y = newY;
+        water.localPosition = localPos;
     }
 
     public void RespawnTree(Transform respawn)

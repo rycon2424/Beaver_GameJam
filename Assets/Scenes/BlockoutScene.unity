@@ -5884,13 +5884,16 @@ MonoBehaviour:
   berriesTimer: 20
   treeTimer: 10
   treePrefab: {fileID: 2363005424356141768, guid: 69bde5ac2df9f2141b5a47697735a46c, type: 3}
-  damBaseDecayRate: 0.03
-  damDecayAcceleration: 0.01
-  babiesBaseDecayRate: 0.15
-  babiesDecayAcceleration: 0.015
+  damBaseDecayRate: 0.01
+  damDecayAcceleration: 0.0025
+  babiesBaseDecayRate: 0.05
+  babiesDecayAcceleration: 0.005
   tutorials:
   - {fileID: 1737847995}
   - {fileID: 1850525908}
+  water: {fileID: 1479007419}
+  minY: -0.4
+  maxY: 0.7
   gameOver: 0
 --- !u!4 &1307697264
 Transform:

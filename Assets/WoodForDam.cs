@@ -4,9 +4,6 @@ public class WoodForDam : MonoBehaviour
 {
     public WoodCollector wCollector;
 
-    
-
-
     private bool playerPresent;
     //public string playerTag;
  
