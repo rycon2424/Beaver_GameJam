@@ -50,7 +50,7 @@ public class Tree : MonoBehaviour, IInteractable
 
         if (health == 1)
         {
-            StartCoroutine(DelayedDrop(Random.Range(1.5f, 3f)));
+            StartCoroutine(DelayedDrop(Random.Range(1f, 2.5f)));
         }
         else if (health == 0)
         {
@@ -89,7 +89,7 @@ public class Tree : MonoBehaviour, IInteractable
         SoundPool.Singleton.PlayRandomSound("Wood Creak Slow", "Wood Creak", "Wood Breaking Full");
 
         StopAllCoroutines();
-        StartCoroutine(BreakJoints(1.75f));
+        StartCoroutine(BreakJoints(1.9f));
     }
 
     IEnumerator BreakJoints(float delay)
