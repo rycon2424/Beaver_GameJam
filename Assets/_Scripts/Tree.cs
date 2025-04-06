@@ -44,7 +44,7 @@ public class Tree : MonoBehaviour, IInteractable
     public void OnInteract(Transform playerTransform)
     {
         FindFirstObjectByType<PlayerAnimation>().PlayAnimation(PlayerAnimationStates.Chomp);
-        
+
         health--;
         directions.Add((playerTransform.position - transform.position).normalized);
 
@@ -67,13 +67,11 @@ public class Tree : MonoBehaviour, IInteractable
 
     void DropTree()
     {
-        ScreenShake.Instance.Shake();
-
         foreach (var col in colliders)
         {
             col.enabled = true;
         }
-        
+
         foreach (var item in directions)
         {
             dir += item;
@@ -86,10 +84,12 @@ public class Tree : MonoBehaviour, IInteractable
         rb.AddForceAtPosition(dir * torqueForce, pushPos);
         trigger.enabled = false;
 
-        SoundPool.Singleton.PlayRandomSound("Wood Creak Slow", "Wood Creak", "Wood Breaking Full");
 
         StopAllCoroutines();
         StartCoroutine(BreakJoints(1.9f));
+
+        SoundPool.Singleton.PlayRandomSound("Wood Creak Slow", "Wood Creak", "Wood Breaking Full");
+        ScreenShake.Instance.Shake(1.9f, 0.02f);
     }
 
     IEnumerator BreakJoints(float delay)
@@ -108,6 +108,8 @@ public class Tree : MonoBehaviour, IInteractable
         {
             wood.enabled = true;
         }
+
+        ScreenShake.Instance.Shake(.15f, .07f);
 
         yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
         GameManager.Singleton.RespawnTree(transform);
