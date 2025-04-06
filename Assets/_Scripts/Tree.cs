@@ -58,6 +58,7 @@ public class Tree : MonoBehaviour, IInteractable
         }
 
         SoundPool.Singleton.PlayRandomSound("Chop", "Chop 2");
+        // STEVEN
     }
 
     IEnumerator DelayedDrop(float delay)
