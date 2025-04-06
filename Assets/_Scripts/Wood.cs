@@ -18,7 +18,7 @@ public class Wood : ResourceAble, IInteractable
         if (collector != null && collision.gameObject.tag == "Obstacle")
         {
             collector.RemoveWood(this);
-            SoundPool.Singleton.PlayRandomSound("Hit Stone");
+            SoundPool.Singleton.PlayRandomSound("Log 1", "Log 2");
         }
     }
 
@@ -65,6 +65,9 @@ public class Wood : ResourceAble, IInteractable
         joint.projectionAngle = 1f;
         // End
 
+        SoundPool.Singleton.PlayRandomSound("Log 1", "Log 2");
         collector.AddWood(this);
+
+
     }
 }
