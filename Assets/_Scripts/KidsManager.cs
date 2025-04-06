@@ -7,11 +7,14 @@ public class KidsManager : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>())
         {
-            int currentBerries =  UIManager.Singleton.itemVisuals[ItemTypes.Berries].count;
+            if (UIManager.Singleton.itemVisuals.ContainsKey(ItemTypes.Berries))
+            {
+                int currentBerries =  UIManager.Singleton.itemVisuals[ItemTypes.Berries].count;
 
-            GameManager.Singleton.babiesCurrentFood += currentBerries;
+                GameManager.Singleton.babiesCurrentFood += currentBerries;
             
-            UIManager.Singleton.UpdateItem(ItemTypes.Berries, -currentBerries);
+                UIManager.Singleton.UpdateItem(ItemTypes.Berries, -currentBerries);
+            }
         }
     }
 }
