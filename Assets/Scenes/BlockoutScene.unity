@@ -64500,6 +64500,8 @@ MonoBehaviour:
   minY: -0.4
   maxY: 0.7
   gameOver: 0
+  maxWaterLevelTime: 3
+  gameOverWaterLevel: 5
 --- !u!4 &1307697264
 Transform:
   m_ObjectHideFlags: 0
