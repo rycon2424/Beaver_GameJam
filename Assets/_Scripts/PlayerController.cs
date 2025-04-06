@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public Transform rayPoint;
     public float interactableRange = 1.5f;
     public GameObject walkDirectionIndicator;
+    [SerializeField] float defaultMovementSpeed = 5.5f;
+    [SerializeField] float woodDrag = 0.1f;
 
     [Header("Camera Offset Settings")]
     public Vector3 cameraOffset = new Vector3(0, 10f, -8f);        // offset from player
@@ -47,11 +49,19 @@ public class PlayerController : MonoBehaviour
         walkDirectionIndicator.transform.parent = null;
     }
 
+    public void UpdateMovementSpeed(int logs)
+    {
+        if (logs == 0)
+            playerAgent.speed = defaultMovementSpeed;
+        else
+            playerAgent.speed = defaultMovementSpeed * (1f - Math.Clamp(woodDrag * logs, 0.3f, 1));
+    }
+
     private void Update()
     {
         if (lockPlayer)
             return;
-        
+
         HandleAnimation();
         HandleMovement();
         HandleZoom(); // New: handle zooming
@@ -68,7 +78,7 @@ public class PlayerController : MonoBehaviour
     private void HandleAnimation()
     {
         walkDirectionIndicator.transform.position = playerAgent.destination;
-        
+
         if (moving == false && playerAgent.hasPath)
         {
             moving = true;

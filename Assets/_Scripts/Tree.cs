@@ -44,13 +44,13 @@ public class Tree : MonoBehaviour, IInteractable
     public void OnInteract(Transform playerTransform)
     {
         FindFirstObjectByType<PlayerAnimation>().PlayAnimation(PlayerAnimationStates.Chomp);
-        
+
         health--;
         directions.Add((playerTransform.position - transform.position).normalized);
 
         if (health == 1)
         {
-            StartCoroutine(DelayedDrop(Random.Range(1.5f, 3f)));
+            StartCoroutine(DelayedDrop(Random.Range(1f, 2.5f)));
         }
         else if (health == 0)
         {
@@ -71,7 +71,7 @@ public class Tree : MonoBehaviour, IInteractable
         {
             col.enabled = true;
         }
-        
+
         foreach (var item in directions)
         {
             dir += item;
@@ -84,10 +84,12 @@ public class Tree : MonoBehaviour, IInteractable
         rb.AddForceAtPosition(dir * torqueForce, pushPos);
         trigger.enabled = false;
 
-        SoundPool.Singleton.PlayRandomSound("Wood Creak Slow", "Wood Creak", "Wood Breaking Full");
 
         StopAllCoroutines();
-        StartCoroutine(BreakJoints(1.75f));
+        StartCoroutine(BreakJoints(1.9f));
+
+        SoundPool.Singleton.PlayRandomSound("Wood Creak Slow", "Wood Creak", "Wood Breaking Full");
+        ScreenShake.Instance.Shake(1.9f, 0.02f);
     }
 
     IEnumerator BreakJoints(float delay)
@@ -107,7 +109,10 @@ public class Tree : MonoBehaviour, IInteractable
             wood.enabled = true;
         }
 
-        yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
-        GameManager.Singleton.RespawnTree(transform);
+        ScreenShake.Instance.Shake(.15f, .07f);
+
+        // Respawn
+        //yield return new WaitForSeconds(GameManager.Singleton.treeTimer);
+        //GameManager.Singleton.RespawnTree(transform);
     }
 }

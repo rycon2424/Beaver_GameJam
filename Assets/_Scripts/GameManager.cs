@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
         }
 
         Singleton = this;
+
+        //Baby's health set voor main scherm
+        babiesCurrentFood = babiesMaxFood;
     }
 
     private void Start()
