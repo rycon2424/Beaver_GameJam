@@ -173,29 +173,29 @@ Material:
     - Boolean_47beb188f4e848eab4157d1f8dfcf6a6: 0
     - LIGHTMAP: 0
     - Vector1_169d5694129941c580fd80f2acf283e6: 0.06
-    - Vector1_1C8FEA19: 1.01
+    - Vector1_1C8FEA19: 0.99
     - Vector1_2a6519e36ea446d3bcfbc76deec250ed: 0.1
     - Vector1_406e09cc21e648d5a17c1de5c9b66bb6: 3
     - Vector1_50C74F87: 0.06
     - Vector1_55b6fd5ba84a4c44be4fa2fe228a43a5: 0.5
-    - Vector1_57f9e03a267f4f01b2f7b58b8b49c8c9: 1.05
-    - Vector1_5DE38BA8: 0.3
+    - Vector1_57f9e03a267f4f01b2f7b58b8b49c8c9: 4.9
+    - Vector1_5DE38BA8: 0.41
     - Vector1_5f79e0f63d9d49c187bd2e579c370071: 0
     - Vector1_62f25ce2f1d340c99eb6fdb9d67c4ae0: 0.35
     - Vector1_712C90A3: 0.1
     - Vector1_7324390682174b808651999e5ad13f9c: 0.1
     - Vector1_7df815fa9984416bae2d0cbd98fbd8fd: 107.61
     - Vector1_87e71d952cbb420b98f7292df088fcc7: 568.7
-    - Vector1_95fed237aa4143259317a6bd32760d0c: 0.8
+    - Vector1_95fed237aa4143259317a6bd32760d0c: 0.98
     - Vector1_C8CD7BB7: 0.2
-    - Vector1_EBF894A3: 5.46
+    - Vector1_EBF894A3: 0.77
     - Vector1_F8D9205E: 0.8
     - Vector1_a590fdfd6e8842f6a4597f2069a62f3c: 1.1
     - Vector1_a66786cc268a4c6bbb3e6e0a1e98367e: 0.54
     - Vector1_ae09329119524ea5a70a94346a28798f: 0.03
     - Vector1_bdf6819dd94643cb8b5d1e2def833fd9: 1.43
     - Vector1_e29848597613410187d86218c80f3c69: 2
-    - Vector1_e4a81ffb3b174d419060eff8f55fc819: 1.71
+    - Vector1_e4a81ffb3b174d419060eff8f55fc819: 3.69
     - Vector1_fbf15cd8ea2349929119b667e14c3949: 0
     - _Brightness: 2.13
     - _BumpScale: 1
@@ -204,7 +204,7 @@ Material:
     - _DstBlend: 0
     - _EnableHeightBlend: 0
     - _EnableInstancedPerPixelNormal: 1
-    - _FoamScale: 2.59
+    - _FoamScale: 3.62
     - _FogMax: 100
     - _FogMin: 8
     - _FogStrength: 1
