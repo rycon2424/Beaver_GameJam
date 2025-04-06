@@ -5,20 +5,22 @@ using UnityEngine;
 public class KidsManager : MonoBehaviour
 {
     public Animator[] kidsAnim;
+    public GameObject babyCam;
 
     private Coroutine stateHandlers;
 
     public static KidsManager Singleton;
-    
+
     private void Awake()
     {
         if (Singleton != null)
             Destroy(Singleton.gameObject);
         Singleton = this;
     }
-    
+
     private void Start()
     {
+        babyCam.SetActive(false);
         stateHandlers = StartCoroutine(States());
     }
 
@@ -28,12 +30,12 @@ public class KidsManager : MonoBehaviour
         {
             if (UIManager.Singleton.itemVisuals.ContainsKey(ItemTypes.Berries))
             {
-                int currentBerries =  UIManager.Singleton.itemVisuals[ItemTypes.Berries].count;
+                int currentBerries = UIManager.Singleton.itemVisuals[ItemTypes.Berries].count;
 
                 GameManager.Singleton.babiesCurrentFood += currentBerries;
-            
+
                 UIManager.Singleton.UpdateItem(ItemTypes.Berries, -currentBerries);
-                
+
                 PlayAnimation("EATING");
             }
         }
@@ -42,7 +44,7 @@ public class KidsManager : MonoBehaviour
     public void PlayAnimation(string animationName, bool continueStates = true)
     {
         StopCoroutine(stateHandlers);
-        
+
         foreach (Animator anim in kidsAnim)
         {
             anim.Play(animationName);
@@ -60,7 +62,8 @@ public class KidsManager : MonoBehaviour
         while (GameManager.Singleton.gameOver == false)
         {
             int foodpercentage = Mathf.CeilToInt(GameManager.Singleton.babiesCurrentFood / GameManager.Singleton.babiesMaxFood * 100);
-            if (foodpercentage > 50)
+            babyCam.SetActive(foodpercentage < 50);
+            if (foodpercentage >= 50)
             {
                 foreach (Animator anim in kidsAnim)
                 {
