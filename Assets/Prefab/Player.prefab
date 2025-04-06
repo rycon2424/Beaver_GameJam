@@ -369,6 +369,8 @@ MonoBehaviour:
   rayPoint: {fileID: 4557783582977472209}
   interactableRange: 2.5
   walkDirectionIndicator: {fileID: 3606739249548702161}
+  defaultMovementSpeed: 5.5
+  woodDrag: 0.1
   cameraOffset: {x: 0, y: 10, z: -10}
   cameraRotationEuler: {x: 45, y: 0, z: 0}
   smoothSpeed: 5
@@ -434,10 +436,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.3243962
+  m_Height: 0.8970704
+  m_Direction: 2
+  m_Center: {x: -2.8043431e-15, y: -0.5637471, z: 0.025083184}
 --- !u!195 &2910829987062953690
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -456,7 +458,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0.9
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

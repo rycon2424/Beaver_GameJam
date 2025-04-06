@@ -59,6 +59,12 @@ public class Wood : ResourceAble, IInteractable
         joint.zMotion = ConfigurableJointMotion.Locked;
         joint.enableCollision = true;
 
+        // Additional
+        joint.projectionMode = JointProjectionMode.PositionAndRotation;
+        joint.projectionDistance = 0.1f;
+        joint.projectionAngle = 1f;
+        // End
+
         SoundPool.Singleton.PlayRandomSound("Log 1", "Log 2");
         collector.AddWood(this);
 
