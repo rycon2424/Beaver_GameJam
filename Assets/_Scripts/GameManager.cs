@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     }
 
     [Button]
-    private void StartGame()
+    public void StartGame()
     {
         damCurrentHealth = damMaxHealth;
         babiesCurrentFood = babiesMaxFood;

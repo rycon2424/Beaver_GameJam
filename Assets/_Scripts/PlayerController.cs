@@ -1,3 +1,5 @@
+using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,11 +24,19 @@ public class PlayerController : MonoBehaviour
     public float maxZoomY = 20f;
     [Space]
     public LayerMask cameraRayMask;
+    [Space]
+    [ReadOnly]
+    public bool lockPlayer;
 
     private PlayerAnimation playerAnim;
     private bool moving;
     private IInteractable currentInteractableTarget;
-    private Transform interactablePosition;
+    private Transform interactableNotInRange;
+
+    private void Awake()
+    {
+        lockPlayer = true;
+    }
 
     private void Start()
     {
@@ -36,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (lockPlayer)
+            return;
+        
         HandleAnimation();
         HandleMovement();
         HandleZoom(); // New: handle zooming
@@ -43,6 +56,9 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (lockPlayer)
+            return;
+
         FollowPlayerWithCamera();
     }
 
@@ -63,18 +79,18 @@ public class PlayerController : MonoBehaviour
 
     private void HandleMovement()
     {
-        if (interactablePosition)
+        if (interactableNotInRange) // walk till in range
         {
-            if (Vector3.Distance(rayPoint.position, interactablePosition.transform.position) <= interactableRange)
+            if (Vector3.Distance(rayPoint.position, interactableNotInRange.transform.position) <= interactableRange)
             {
                 playerAgent.SetDestination(playerAgent.transform.position);
                 currentInteractableTarget.OnInteract(transform);
 
                 currentInteractableTarget = null;
-                interactablePosition = null;
+                interactableNotInRange = null;
             }
         }
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -86,18 +102,20 @@ public class PlayerController : MonoBehaviour
 
                 if (currentInteractableTarget != null)
                 {
-                    interactablePosition = hit.collider.gameObject.transform;
-                    
                     if (Vector3.Distance(rayPoint.position, hit.collider.gameObject.transform.position) <= interactableRange)
                     {
                         playerAgent.SetDestination(playerAgent.transform.position);
                         currentInteractableTarget.OnInteract(transform);
                     }
-                    
+                    else
+                    {
+                        interactableNotInRange = hit.collider.gameObject.transform;
+                    }
+
                     return;
                 }
 
-                interactablePosition = null;
+                interactableNotInRange = null;
 
                 playerAgent.SetDestination(hit.point);
             }
