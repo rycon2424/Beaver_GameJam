@@ -21,9 +21,11 @@ public class DamManager : MonoBehaviour
     {
         float progress = Mathf.Clamp(GameManager.Singleton.damCurrentHealth, 0, 100); // clamp just in case
 
+        float totalDamHealth = GameManager.Singleton.damMaxHealth;
+        
         // Logs (40 steps)
         int logSteps = 40;
-        int currentLogStep = Mathf.FloorToInt((progress / 100f) * logSteps);
+        int currentLogStep = Mathf.FloorToInt((progress / totalDamHealth) * logSteps);
 
         for (int i = logVisuals.Count - 1; i >= 0; i--)
         {
@@ -32,7 +34,7 @@ public class DamManager : MonoBehaviour
 
         // Water (20 steps)
         int waterSteps = 20;
-        int currentWaterStep = Mathf.FloorToInt((progress / 100f) * waterSteps);
+        int currentWaterStep = Mathf.FloorToInt((progress / totalDamHealth) * waterSteps);
 
         for (int i = waterVisuals.Count - 1; i >= 0; i--)
         {

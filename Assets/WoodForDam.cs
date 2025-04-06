@@ -24,6 +24,9 @@ public class WoodForDam : MonoBehaviour
 
                 for (int i = wCollector.woods.Count - 1; i >= 0; i--)
                 {
+                    if (wCollector.woods[i] == null)
+                        continue;
+                    
                     Destroy(wCollector.woods[i].gameObject);
                     wCollector.woods.RemoveAt(i);
                     UIManager.Singleton.UpdateItem(ItemTypes.Wood, -1);
@@ -32,12 +35,9 @@ public class WoodForDam : MonoBehaviour
                     
                     DamManager.Singleton.ChangeHealth();
                 }
-
-                //wCollector.RemoveAllWood();
-
-            }
                 
-
+                wCollector.woods.Clear();
+            }
         }
     }
 
